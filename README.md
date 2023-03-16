@@ -1,1 +1,41 @@
 # Webtervezes-2023
+
+## Feladatok:
+- [x] Témaválasztás
+- [ ] **Első mérföldkő (2023.03.19):**
+  - [ ] css mappa és benne a style.css létrehozása
+  - [ ] img mappa létrehozása (minden kép ide kerüljön, amit használni fogunk!)
+  - [ ] Navigációs menü elkészítése
+    - [ ] Minden oldalon mindig (legörgetéskor is) látszik
+    - [ ] Eltérő az éppen megnyitott oldal menüpontjának megjelenése
+    - [ ] Reszponzívak a menüpontok (ha föléjük visszük az egeret, megváltoznak)
+  - [ ] Főoldal elkészítése:
+    - [ ] Összehasonlító táblázat a bolygókról
+  - [ ] Bolygókról szóló oldalak:
+    - [ ] Merkúr
+    - [ ] Vénusz
+    - [ ] Föld
+    - [ ] Mars
+    - [ ] Jupiter
+    - [ ] Szaturnusz
+    - [ ] Uránusz
+    - [ ] Neptunusz
+  - [ ] Regisztrációs oldal elkészítése
+    - [ ] ?
+  - [ ] ***Beadás előtt:***
+    - [ ] Minden html oldal szabványos?
+    - [ ] Kipróbáltuk, hogy Firefox-ban és Chrome-ban egyaránt jól megjelenik az oldal?
+    - [ ] Ablak átméretezés esetén is jól jelenik meg?
+    - [ ] Responsive? Android-on is jól jelenik meg?
+    - [ ] Minden kép az img mappában van?
+    - [ ] Minden css a style mappában van?
+    - [ ] Csak a beadandó file-okat tartalmazza a project?
+    - [ ] Minden URI relatív útvonallal van megadva? (ha máshova másolom a project-et is tökéletesen működik a weblap?)
+    - [ ] Mind a ketten ugyanazt adtuk be?
+    - [ ] zip-ben becsomagolva töltöttük fel?
+- [ ] **Második mérföldkő (2023.04.16):**
+  - [ ] ?
+  - [ ] ***Beadás előtt:***
+    - [ ] ?
+- [ ] **Védés**
+  - [ ] Minden érthető mindkettőnknek a kódban? (Ha van kérdés, beszéljük át)
