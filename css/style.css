@@ -1,1 +1,53 @@
-
+body {
+    padding-top: 65px;
+  }
+  
+  nav {
+    display: flex;
+    flex-wrap: wrap;
+    position: sticky;
+  }
+  
+  nav ul {
+    list-style: none;
+    background-color: #333;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+  }
+  
+  nav ul li {
+    float: left;
+  }
+  
+  nav ul li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    text-transform: capitalize;
+    font-size: 18px;
+    font-family: "Roboto", Helvetica, sans-serif;
+  }
+  
+  nav ul li a:hover {
+    background-color: #111;
+  }
+  
+  main {
+    width: 75%;
+    margin: auto;
+    color: #2B3467;
+    font-size: 18px;
+  }
+  
+  .tudnivalok li {
+      line-height: 2;
+      list-style: cross;
+  }
+  
