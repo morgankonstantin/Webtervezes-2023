@@ -6,9 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="../css/style.css" />
     <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon" />
-    <style>
-      @import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
-    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto&display=swap"
+      rel="stylesheet"
+    />
     <title>Document</title>
   </head>
   <body>
@@ -16,7 +19,7 @@
       <nav class="navbar">
         <ul>
           <li><a href="index.html">Naprendszerünk</a></li>
-          <li><a href="merkur.html">Merkúr</a></li>
+          <li><a class="active" href="merkur.html">Merkúr</a></li>
           <li><a href="#">Vénusz</a></li>
           <li><a href="#">Föld</a></li>
           <li><a href="#">Mars</a></li>
@@ -31,6 +34,7 @@
       <h1><strong>Merkúr</strong></h1>
       <section class="attekintes">
         <h2>Áttekintés</h2>
+        <img class="merkur-img" src="../img/merkur.jpg" alt="Merkúr Bolygó" />
         <p>
           Naprendszerünk legkisebb és a Naphoz legközelebb eső bolygója, a
           Merkúr csak valamivel nagyobb, mint a Föld Holdja.
@@ -49,7 +53,7 @@
           naplementekor
         </p>
       </section>
-      <article class="tudnivalok">
+      <section class="tudnivalok">
         <h2>Amit érdemes tudni...</h2>
         <ul>
           <li>
@@ -84,12 +88,67 @@
             csillagunk több mint háromszor nagyobbnak tűnik, mint a Földön.
           </li>
           <li>
-            A NASA két küldetése tárta fel a Mercury-t: a Mariner 10 repült el
-            először a Mercury mellett, és a MESSENGER volt az első, aki
+            A NASA két küldetése tárta fel a Merkúrt: a Mariner 10 repült el
+            először a Merkúr mellett, és a MESSENGER volt az első, aki
             keringett. Az ESA BepiColombo a Merkúr felé tart
           </li>
         </ul>
-      </article>
+      </section>
+      <section>
+        <h2>Pár fun fact</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Tény</th>
+              <th>Merkúr</th>
+              <th>Föld</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Távolsága a naptól (AU)</td>
+              <td>0.39</td>
+              <td>1.00</td>
+            </tr>
+            <tr>
+              <td>Orbitális periódus (nap)</td>
+              <td>88</td>
+              <td>365.25</td>
+            </tr>
+            <tr>
+              <td>Átmérő (km)</td>
+              <td>4,880</td>
+              <td>12,742</td>
+            </tr>
+            <tr>
+              <td>Átlagos felszíni hőmérséklet (°C)</td>
+              <td>167</td>
+              <td>14</td>
+            </tr>
+            <tr>
+              <td>Holdjainak száma</td>
+              <td>0</td>
+              <td>1</td>
+            </tr>
+            <tr>
+              <td>Légkör</td>
+              <td>Vékony exoszférája főleg héliumból és hidrogénből áll</td>
+              <td>Atmoszféra ami főleg nitrogénból és oxigénből áll</td>
+            </tr>
+            <tr>
+              <td>Mágneses mező</td>
+              <td>Gyenge, részben kiterjedt</td>
+              <td>Erős and rendkívül kiterjedt</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
     </main>
+    <footer>
+      <p>Készítők: Konstantin Morgan</p>
+      <p>email: <a href="mailto: Konstantin.Morgan@stud.u-szeged.hu">Konstantin.Morgan@stud.u-szeged.hu</a></p>
+      <p>Slezák Attila</p>
+      <p>email: <a href="mailto: pelda@peldamail.com">pelda@peldamail.com</a></p>
+    </footer>
   </body>
 </html>

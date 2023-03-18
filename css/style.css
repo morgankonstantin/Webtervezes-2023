@@ -1,53 +1,127 @@
 body {
-    padding-top: 65px;
-  }
-  
-  nav {
-    display: flex;
-    flex-wrap: wrap;
-    position: sticky;
-  }
-  
-  nav ul {
-    list-style: none;
-    background-color: #333;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    width: 100%;
-    position: fixed;
-    top: 0;
-    left: 0;
-  }
-  
-  nav ul li {
-    float: left;
-  }
-  
-  nav ul li a {
-    display: block;
-    color: white;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-    text-transform: capitalize;
-    font-size: 18px;
-    font-family: "Roboto", Helvetica, sans-serif;
-  }
-  
-  nav ul li a:hover {
-    background-color: #111;
-  }
-  
-  main {
-    width: 75%;
-    margin: auto;
-    color: #2B3467;
-    font-size: 18px;
-  }
-  
-  .tudnivalok li {
-      line-height: 2;
-      list-style: cross;
-  }
-  
+  padding-top: 4.1em;
+  font-family: "Roboto", Helvetica, sans-serif;
+  margin: 0;
+}
+/*NAVBAR*/
+nav {
+  display: flex;
+  flex-wrap: wrap;
+  position: sticky;
+}
+
+nav ul {
+  list-style: none;
+  background-color: #333;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+nav ul li {
+  float: left;
+}
+
+nav ul li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  text-transform: capitalize;
+  font-size: 18px;
+}
+
+nav li a.active {
+  background-color: #00abb3;
+  color: #fcffe7;
+}
+
+nav ul li a:hover:not(.active) {
+  background-color: #111;
+}
+
+main {
+  color: #2b3467;
+  font-size: 1.3rem;
+}
+
+section {
+  padding: 4em 8em;
+}
+
+h1,
+h2 {
+  clear: both;
+  text-align: center;
+  text-transform: capitalize;
+}
+
+.attekintes {
+  line-height: 1.5;
+  text-align: left;
+  height: 20em;
+}
+
+.tudnivalok {
+  background-color: #2b3467;
+  color: #fff;
+}
+
+.tudnivalok li {
+  line-height: 2.5;
+}
+
+.merkur-img {
+  width: 300px;
+  height: 300px;
+  border-radius: 1em;
+  float: right;
+  margin: 2em;
+  position: relative;
+  bottom: 3em;
+  z-index: -1; /* menu ele csuszas miatt */
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+th,
+td {
+  text-align: left;
+  padding: 8px;
+}
+th {
+  background-color: #2b3467;
+  color: white;
+}
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+tr:hover {
+  background-color: #ddd;
+}
+
+footer {
+  background-color: #2b3467;
+  color: #fff;
+  text-align: right;
+  width: 100%;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+footer p {
+  height: 2em;
+  padding-right: 20px;
+  margin-bottom: 0;
+}
+
+footer p a:link {
+  color: white;
+}
