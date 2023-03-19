@@ -2,7 +2,20 @@ body {
   padding-top: 4.1em;
   font-family: "Roboto", Helvetica, sans-serif;
   margin: 0;
+  animation: fadeInAnimation ease 1.5s;  /* fade in animation on page load */
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
 }
+
+@keyframes fadeInAnimation {
+  0% {
+      opacity: 0;
+  }
+  100% {
+      opacity: 1;
+   }
+} 
+
 /*NAVBAR*/
 nav {
   display: flex;
@@ -73,6 +86,12 @@ h2 {
 
 .tudnivalok li {
   line-height: 2.5;
+  list-style: none;
+}
+
+.tudnivalok li::before {
+  content: url(../img/space32.png);
+  margin-right: 8px;
 }
 
 .bolygo-img {
@@ -104,6 +123,10 @@ tr:nth-child(even) {
 }
 tr:hover {
   background-color: #ddd;
+}
+
+.galaxis-tablazat tr:hover {
+  transform: scale(1.02);
 }
 
 footer {
