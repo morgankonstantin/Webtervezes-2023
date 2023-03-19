@@ -21,6 +21,7 @@ nav {
   display: flex;
   flex-wrap: wrap;
   position: sticky;
+  z-index: 1;
 }
 
 nav ul {
@@ -81,7 +82,7 @@ h2 {
 .attekintes {
   line-height: 1.5;
   text-align: left;
-  padding-bottom: 8em;
+  /*padding-bottom: 8em;*/
 }
 
 .tudnivalok {
@@ -100,18 +101,23 @@ h2 {
 }
 
 .bolygo-img {
-  width: 300px;
+  width: 400px;
   height: 300px;
   border-radius: 1em;
   float: right;
   margin: 2em;
   position: relative;
   bottom: 3em;
-  z-index: -1; /* menu ele csuszas miatt */
+  /*z-index: -1; !* menu ele csuszas miatt *!*/
+}
+
+#merkur-img {
+  width: 300px;
 }
 
 .urlap {
   margin: auto;
+  padding-bottom: 4em;
   width: 900px;
 }
 
@@ -124,6 +130,7 @@ table {
   border-collapse: collapse;
   width: 100%;
 }
+
 th,
 td {
   text-align: left;
@@ -170,6 +177,96 @@ input {
   width: 250px;
 }
 
+input[type="radio"] {
+  margin-right: 16px;
+  height: initial;
+  width: initial;
+}
+
+#kedvenc-bolygo {
+  margin-top: 25px;
+  position: relative;
+  width: 822px;
+}
+
+#kedvenc-bolygo br {
+  display: none;
+}
+
+fieldset label {
+  font-size: 16px;
+}
+
+#urlap-gombok {
+  position: relative;
+  width: 600px;
+}
+
+input[type="submit"] {
+  display: inline;
+}
+
+input[type="reset"] {
+  position: absolute;
+  left: 300px;
+}
+
 input[type="submit"], input[type="reset"] {
   width: 150px;
+}
+
+@media screen and (max-width: 1053px) {
+  body {
+    padding-top: 8.2em;
+  }
+  section {
+    padding-left: 0.0em;
+    padding-right: 0.0em;
+  }
+  .urlap {
+    padding-left: 4.5em;
+    padding-right: 4.5em;
+  }
+  .attekintes {
+    padding-left: 2.2em;
+    padding-right: 1.3em;
+  }
+  .tudnivalok {
+    padding-left: 0.9em;
+    padding-right: 1.3em;
+  }
+  #nav-regisztracio {
+    float: left;
+  }
+}
+
+@media screen and (max-width: 978px) {
+  .oszlop {
+    float: none;
+  }
+  .urlap {
+    width: auto;
+  }
+  #kedvenc-bolygo {
+    width: 228px;
+  }
+  #kedvenc-bolygo br {
+    display: inline;
+  }
+  #urlap-gombok {
+    width: 200px;
+  }
+  input[type="reset"] {
+    position: static;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .bolygo-img {
+    margin-right: 0em;
+  }
+}
+
+audio {
+  margin-top: -15px;
 }

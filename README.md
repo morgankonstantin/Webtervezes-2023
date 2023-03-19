@@ -3,16 +3,16 @@
 ## Feladatok:
 - [x] Témaválasztás
 - [ ] **Első mérföldkő (2023.03.19):**
-  - [ ] Készítsük el a mappa struktúrát a munkához:
-    - [ ] *trash* mappa létrehozása a brainstorming-hoz (ide bármi bedobható mint ötlet)
-    - [ ] *NaprendszerBolygoi* mappa létrehozása a végleges projecthez (ezt adjuk majd be zip-ként)
+  - [x] Készítsük el a mappa struktúrát a munkához:
+    - [x] *trash* mappa létrehozása a brainstorming-hoz (ide bármi bedobható mint ötlet)
+    - [x] *NaprendszerBolygoi* mappa létrehozása a végleges projecthez (ezt adjuk majd be zip-ként)
       - ezen belül:
-      - [ ] *css* mappa és benne a style.css létrehozása
-      - [ ] *img* mappa létrehozása (minden kép ide kerüljön, amit használni fogunk!)
-      - [ ] *bolygok* mappa az egyes bolygókról szóló html file-oknak
+      - [x] *css* mappa és benne a style.css létrehozása
+      - [x] *img* mappa létrehozása (minden kép ide kerüljön, amit használni fogunk!)
+      - [x] *bolygok* mappa az egyes bolygókról szóló html file-oknak
   - [ ] Navigációs menü elkészítése
-    - [ ] Minden oldalon mindig (legörgetéskor is) látszik
-    - [ ] Eltérő az éppen megnyitott oldal menüpontjának megjelenése
+    - [x] Minden oldalon mindig (legörgetéskor is) látszik
+    - [x] Eltérő az éppen megnyitott oldal menüpontjának megjelenése
     - [ ] Reszponzívak a menüpontok (ha föléjük visszük az egeret, megváltoznak)
   - [ ] Főoldal elkészítése (index.html):
     - [ ] Összehasonlító táblázat a bolygókról
@@ -26,14 +26,18 @@
     - [ ] Uránusz (uranusz.html)
     - [ ] Neptunusz (neptunusz.html)
   - [ ] Regisztrációs oldal elkészítése
-    - [ ] ?
+    - [x] Text típusú input-ok: név, irányítószám, város, cím
+    - [x] Password típusú input-ok: jelszó és jelszó megerősítő
+    - [x] Date típusú input-ok: szül. dátum
+    - [x] Radio típusú inputok a kedvenc bolygó kiválasztására
+    - [x] Submit és reset gombok
   - [ ] ***Beadás előtt:***
     - [ ] Minden html oldal szabványos?
     - [ ] Kipróbáltuk, hogy Firefox-ban és Chrome-ban egyaránt jól megjelenik az oldal?
     - [ ] Ablak átméretezés esetén is jól jelenik meg?
     - [ ] Responsive? Android-on is jól jelenik meg?
-    - [ ] Minden kép az img mappában van?
-    - [ ] Minden css a style mappában van?
+    - [x] Minden kép az img mappában van?
+    - [x] Minden css a css mappában van?
     - [ ] ÁLTALÁNOS SZEMPONTOK (MAX: 45 PONT):
       - [ ] FELHASZNÁLÓI ÉLMÉNY - 24 PONT:
         - [ ] A HTML oldalak egységes dizájnnal készültek, minden oldal hasonló felépítés és egységes
@@ -65,25 +69,25 @@
         - [ ] Az elkészített HTML oldalak mindegyike reszponzív, különböző méretű kijelzőkön is
       megfelelően néznek ki, mobilon is megfelelően jelennek meg. (0/5/10 pont)
     - [ ] FELHASZNÁLT ELEMEK (MAX: 45 PONT)
-      - [ ] ŰRLAPOK - 10 PONT
-        - [ ] Az oldal tartalmaz legalább 1 űrlapot, amelynek van legalább 4 megfelelő módon felhasznált
+      - [x] ŰRLAPOK - 10 PONT
+        - [x] Az oldal tartalmaz legalább 1 űrlapot, amelynek van legalább 4 megfelelő módon felhasznált
       input mezője (0/2 pont)
-        - [ ] Összesen legalább 6 különböző típusú input mező található (0/2 pont)
-        - [ ] Van olyan űrlap, amelyik tartalmaz elküldés (submit) gombot (0/2 pont)
-        - [ ] Van olyan űrlap, amelyik tartalmaz alapállapot (reset) gombot (0/2 pont)
-        - [ ] Van olyan űrlap, amelyik tartalmaz mezőcsoportosítást (0/2 pont)
+        - [x] Összesen legalább 6 különböző típusú input mező található (0/2 pont)
+        - [x] Van olyan űrlap, amelyik tartalmaz elküldés (submit) gombot (0/2 pont)
+        - [x] Van olyan űrlap, amelyik tartalmaz alapállapot (reset) gombot (0/2 pont)
+        - [x] Van olyan űrlap, amelyik tartalmaz mezőcsoportosítást (0/2 pont)
       - [ ] STRUKTURÁLIS FELÉPÍTÉS - 3 PONT
         - [ ] A weboldal HTML5 elemek megfelelő használatával van kialakítva (header, footer, nav, aside,
       main, section, article) (mindegyik 1 pont, max 3 pont)
       - [ ] TÁBLÁZATOK - 4 PONT
-        - [ ] A weboldal legalább 1 táblázatot tartalmaz (0/2 pont)
-        - [ ] Létezik olyan táblázat, amelynek van fejléce, ami másképpen jelenik meg (0/1 pont)
+        - [x] A weboldal legalább 1 táblázatot tartalmaz (0/2 pont)
+        - [x] Létezik olyan táblázat, amelynek van fejléce, ami másképpen jelenik meg (0/1 pont)
         - [ ] Létezik olyan táblázat, amely használ headers attribútumot megfelelő módon (0/1 pont)
       - [ ] CSS HASZNÁLATA - 16 PONT
-        - [ ] A projekt tartalmaz legalább 1 CSS fájlt, és az fel is van használva (0/2 pont)
-        - [ ] Elem szelektor használva van legalább 1 helyen (0/1 pont)
-        - [ ] Id szelektor használva van legalább 1 helyen (0/1 pont)
-        - [ ] Class szelektor használva van legalább 1 helyen (0/1 pont)
+        - [x] A projekt tartalmaz legalább 1 CSS fájlt, és az fel is van használva (0/2 pont)
+        - [x] Elem szelektor használva van legalább 1 helyen (0/1 pont)
+        - [x] Id szelektor használva van legalább 1 helyen (0/1 pont)
+        - [x] Class szelektor használva van legalább 1 helyen (0/1 pont)
         - [ ] Attribútum alapján való kijelölés használva van legalább 1 helyen (0/1 pont)
         - [ ] Kapcsolat alapján való kijelölés használva van legalább 1 helyen (0/1 pont)
         - [ ] z-index használata (0/1 pont)
@@ -102,7 +106,7 @@
       - [ ] HTML ELEMEK TESTRESZABÁSA - 10 PONT
         - [ ] Szegély használata (border) (0/1 pont)
         - [ ] Lekerekített sarkok használata (0/1 pont)
-        - [ ] Háttérszín / háttérkép használata (0/1 pont)
+        - [x] Háttérszín / háttérkép használata (0/1 pont)
         - [ ] Szövegek formázása (letter-spacing, line-height, text-align, text-decoration) (0/1 pont)
         - [ ] Pozicionálás (absolute, fixed, relative, static, sticky) (mindegyik 1 pont, max 3 pont)
         - [ ] Árnyékok használata (HTML elemekre vagy szövegekre) (0/1 pont)
