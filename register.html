@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+            href="https://fonts.googleapis.com/css2?family=Roboto&display=swap"
+            rel="stylesheet"
+    />
+    <title>A Naprendszer bolygói - Regisztráció</title>
+</head>
+<body>
+<header>
+    <nav class="navbar">
+        <ul>
+            <li><a href="index.html">Naprendszerünk</a></li>
+            <li><a href="bolygok/merkur.html">Merkúr</a></li>
+            <li><a href="bolygok/venusz.html">Vénusz</a></li>
+            <li><a href="bolygok/fold.html">Föld</a></li>
+            <li><a href="bolygok/mars.html">Mars</a></li>
+            <li><a href="bolygok/jupiter.html">Jupiter</a></li>
+            <li><a href="bolygok/szaturnusz.html">Szaturnusz</a></li>
+            <li><a href="bolygok/uranusz.html">Uránusz</a></li>
+            <li><a href="bolygok/neptunusz.html">Neptunusz</a></li>
+            <li id="nav-regisztracio"><a class="active" href="register.html">Regisztráció</a></li>
+        </ul>
+    </nav>
+</header>
+<main>
+    <h1>Regisztráció</h1>
+    <section class="urlap">
+        <p>Kérjük töltse ki az alábbi regisztrációs űrlapot!</p>
+        <form>
+            <div class="oszlop">
+                <input id="nev" name="nev" type="text" placeholder="Név" maxlength="50" required /><br />
+                <label for="nev">Név</label><br />
+                <input id="jelszo" name="jelszo" type="password" placeholder="Jelszó" maxlength="64" required /><br />
+                <label for="jelszo">Jelszó</label><br />
+                <input id="irszam" name="irszam" type="text" placeholder="Irányítószám" maxlength="10" required /><br />
+                <label for="irszam">Irányítószám</label><br />
+                <input type="submit" value="Tovább">
+            </div>
+            <div class="oszlop">
+                <input id="email" name="email" type="email" placeholder="Email" maxlength="320" required /><br />
+                <label for="email">Email</label><br />
+                <input id="jelszoism" name="jelszoism" type="password" placeholder="Jelszó megerősítése" maxlength="64" required /><br />
+                <label for="jelszoism">Jelszó megerősítése</label><br />
+                <input id="varos" name="varos" type="text" placeholder="Város" maxlength="40" required /><br />
+                <label for="varos">Város</label><br />
+                <input type="reset" value="Töröl">
+            </div>
+            <div>
+                <input id="tel" name="tel" type="tel" placeholder="Telefonszám: +36301234567"  maxlength="20" /><br />
+                <label for="tel">Telefonszám</label><br />
+                <input id="szul-datum" name="szul-datum" type="date" /><br />
+                <label for="szul-datum">Születési dátum</label><br />
+                <input id="utca" name="utca" type="text" placeholder="Utca, házszám..." maxlength="40" required /><br />
+                <label for="utca">Utca, házszám...</label><br />
+            </div>
+        </form>
+    </section>
+</main>
+<footer>
+    <p>Készítők: Konstantin Morgan</p>
+    <p>email: <a href="mailto: Konstantin.Morgan@stud.u-szeged.hu">Konstantin.Morgan@stud.u-szeged.hu</a></p>
+    <p>Slezák Attila</p>
+    <p>email: <a href="mailto: h880402@stud.u-szeged.hu">h880402@stud.u-szeged.hu</a></p>
+</footer>
+</body>
+</html>

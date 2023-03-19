@@ -45,6 +45,10 @@ nav ul li a:hover:not(.active) {
   background-color: #111;
 }
 
+#nav-regisztracio {
+  float: right;
+}
+
 main {
   color: #2b3467;
   font-size: 1.3rem;
@@ -64,7 +68,8 @@ h2 {
 .attekintes {
   line-height: 1.5;
   text-align: left;
-  height: 20em;
+  padding-bottom: 8em;
+  /*height: 20em;*/
 }
 
 .tudnivalok {
@@ -85,6 +90,16 @@ h2 {
   position: relative;
   bottom: 3em;
   z-index: -1; /* menu ele csuszas miatt */
+}
+
+.urlap {
+  margin: auto;
+  width: 900px;
+}
+
+.oszlop {
+  float: left;
+  width: 300px;
 }
 
 table {
@@ -124,4 +139,15 @@ footer p {
 
 footer p a:link {
   color: white;
+}
+
+input {
+  font-size: 16px;
+  margin-top: 25px;
+  height: 25px;
+  width: 250px;
+}
+
+input[type="submit"], input[type="reset"] {
+  width: 150px;
 }
