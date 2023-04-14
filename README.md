@@ -32,7 +32,7 @@
     - [x] Radio típusú inputok a kedvenc bolygó kiválasztására
     - [x] Submit és reset gombok
   - [ ] ***Beadás előtt:***
-    - [ ] Minden html oldal szabványos?
+    - [x] Minden html oldal szabványos?
     - [x] Kipróbáltuk, hogy Firefox-ban és Chrome-ban egyaránt jól megjelenik az oldal?
     - [x] Ablak átméretezés esetén is jól jelenik meg?
     - [ ] Responsive? Android-on is jól jelenik meg?
@@ -111,13 +111,110 @@
         - [x] Pozicionálás (absolute, fixed, relative, static, sticky) (mindegyik 1 pont, max 3 pont)
         - [ ] Árnyékok használata (HTML elemekre vagy szövegekre) (0/1 pont)
         - [x] Transzformálás (eltolás, forgatás, skálázás, nyírás) használata (mindegyik 1 pont, max 2 pont) 
+    - [x] Csak a beadandó file-okat tartalmazza a project de azokat mindet?
+    - [x] Minden URI relatív útvonallal van megadva? (ha máshova másolom a project-et is tökéletesen működik a weblap?)
+    - [x] Mind a ketten ugyanazt adtuk be?
+    - [x] zip-ben becsomagolva töltöttük fel?
+- [ ] **Második mérföldkő (2023.04.16):**
+  - [ ] db/users.txt mappa és file elkészítése a felhasználók letárolására
+  - [ ] db/img/ mappa létrehozása a user profilképek letárolására
+  - [ ] Csak a bejelentkezett felhasználó tudja a bolygókról szóló oldalakat elérni, a többit átirányítani a <tt>bejelentkezés</tt> oldalra
+  - [ ] Jobb oldali menüpontok sorrendje:
+    - [ ] Kijelentkezett felhasználó: Bejelentkezés, Regisztráció
+    - [ ] Bejelentkezett felhasználó: Felhasználók, Profil, Kijelentkezés
+  - [ ] Regisztráció
+    - [ ] Adatok ellenőrzése:
+      - [ ] Azonosak-e a megadott jelszavak
+      - [ ] Ki van-e töltve minden mező
+      - [ ] Email tartalmaz-e @-ot és utána pontot, van-e köztük legalább 1 karakter
+      - [ ] Foglalt-e az email cím
+    - [ ] Sikertelen regisztráció esetén:
+      - [ ] Hiba üzenet arról, hogy miért volt sikertelen
+      - [ ] A beírt adatok ne vesszenek el
+      - [ ] Átirányítás: register.php
+    - [ ] Sikeres regisztráció esetén:
+      - [ ] User adatok mentése:
+        - [ ] Az adatok kulcsa az input mező name attribútuma
+        - [ ] Minden megadott adathoz (kivéve jelszó) azt is elmenteni, hogy publikus (érték: true/false; kulcs: pub_<input-name> pl. pub_email)
+        - [ ] Kulcs: admin, érték: true/false; Az új user mindig: false
+        - [ ] Kulcs: img, érték: file elérési útvonala (a profil képekhez)
+      - [ ] Session változók beállítása az összes user adatra
+      - [ ] Menüpont változás: Regisztráció -> Kijelentkezés
+      - [ ] Menüpont változás: Bejelentkezés -> Profil
+      - [ ] Új menüpont hozzáadása: Felhasználók
+      - [ ] Átirányítás: profil.php
+  - [ ] Bejelentkezés
+    - [ ] Ellenőrizni, hogy szerepel-e a db-ben user az adott email/jelszó-ra
+    - [ ] Sikertelen bejelentkezés esetén:
+      - [ ] Hiba üzenet arról, hogy miért volt sikertelen
+      - [ ] Átirányítás: login.php
+    - [ ] Sikeres bejelentkezés esetén:
+      - [ ] Menüpont változás: Regisztráció -> Kijelentkezés
+      - [ ] Menüpont változás: Bejelentkezés -> Profil
+      - [ ] Új menüpont hozzáadása: Felhasználók
+      - [ ] Átirányítás: profil.php
+  - [ ] Profil
+    - [ ] Csak bejelentkezett user láthatja
+    - [ ] Legyen felül egy profilkép a user-ről, és file feltöltési lehetőség hozzá
+    - [ ] Jelenjenek meg a user adatok egy két oszlopos táblázatban:
+      - [ ] Első oszlop: A user adatai (ugyanolyan input mezőkben, mint amilyenekben a regisztráció során meg adtuk őket)
+      - [ ] Második oszlop: Checkbox, hogy az adat publikus-e (jelszót ne lehessen publikusra állítani!)
+  - [ ] Felhasználók
+    - [ ] Csak bejelentkezett user láthatja
+    - [ ] Táblázat az összes felhasználóról:
+      - [ ] A felhasználók a táblázat sorai, az adataik az oszlopok
+      - [ ] Plusz egy oszlop az admin jogról (checkbox)
+  - [ ] Kijelentkezés
+    - [ ] Session és Cookie törlés
+    - [ ] Menüpont eltávolítása: Felhasználók
+    - [ ] Menüpont változás: Profil -> Bejelentkezés
+    - [ ] Menüpont változás: Kijelentkezés -> Regisztráció
+    - [ ] Átirányítás: login.php
+  - [ ] ***Beadás előtt:***
+    - [ ] Legfeljebb 1 kivétellel az összes HTML oldal szabványos (de legalább 5 szabványos HTML oldal el van készítve)
+    - [ ] A bizalmas adatokat kezelő űrlapadatok továbbítása HTTP POST használatával van megoldva
+    - [ ] ÁLTALÁNOS SZEMPONTOK (MAX: 25 PONT)
+      - [ ] FELHASZNÁLÓI ÉLMÉNY - 17 PONT
+        - [x] Az elkészített weboldalak logikusan vannak felépítve, egyértelmű, hogy milyen műveleteket lehet csinálni, hogyan, egyértelműen jelezve van minden szükséges információ (0/1/3 pont)
+        - [x] Az oldalakon minden információ jól olvasható (pl. nem fekete háttéren sötét betűk), nem lógnak egybe a szövegek vagy egyéb elemek, van elegendő hely hagyva az elemek között, stb. (0/1/3 pont)
+        - [ ] Az oldalon nincsenek hibák: nem jelennek meg warningok, notice-ok, vagy egyéb rosszul beállított elemek (pl. img tag, érvénytelen képpel), minden ott lévő funkció működik (0/3 pont)
+        - [ ] Az űrlapok intuitívak, és a felhasználó számára jelezve van, hogy mi a követelmény az adott input mezőre nézve (pl. a jelszó legalább 8 karakter), ezek nem az űrlap elküldése után jutnak a felhasználó tudtára (0/3 pont)
+        - [ ] A megvalósított funkciók használata kényelmes (0/2/5 pont)
+      - [ ] MENÜ - 4 PONT
+        - [ ] A rendelkezésre álló menüpontok minden oldalon láthatóak, a navigáció közöttük megfelelően működik (0/1 pont)
+        - [ ] A felhasználó mindig tudja, hogy melyik oldalon van éppen (pl. az aktuális menüpont más dizájnnal jelenik meg) (0/1 pont)
+        - [x] A menü interaktív: a kurzor rávitelére változik a menüpont kinézete (0/1 pont)
+        - [x] A menü / oldal fejléc az oldal görgetésénél is látszik (0/1 pont)
+      - [ ] TECHNIKAI ELEMEK - 9 PONT
+        - [ ] GET paraméterek megfelelő használata (0/2 pont)
+        - [ ] Objektumorientáltság megfelelő használata (0/2/4 pont)
+        - [ ] Sütik értelmes módon való használata (0/3 pont)
+    - [ ] MEGVALÓSÍTOTT FUNKCIÓK (MAX: 65 PONT)
+      - [ ] REGISZTRÁCIÓ - 13 PONT
+        - [ ] Van működő regisztráció, a helyes regisztráció hatására az új felhasználó adatai eltárolódnak (0/2 pont)
+        - [ ] Minden kötelezően kitöltendő űrlapmező kitöltése szerveroldalon is ellenőrizve van (0/2 pont)
+        - [ ] Ha foglalt a felhasználónév (vagy e-mail cím), akkor nem regisztrálja be az új felhasználót (0/2 pont)
+        - [ ] A jelszót két alkalommal kell beírni, ezek azonossága vizsgálva van szerver oldalon(0/2 pont)
+        - [ ] Ha valamelyik mezőt rosszul (vagy nem) tölti ki a felhasználó, akkor a weboldal erre figyelmezteti, pontos hibajelzéssel, az összes hibát jelezve (0/2 pont)
+        - [ ] A felhasználók jelszavai biztonságosan vannak tárolva (nem plain text) (0/3 pont)
+      - [ ] BEJELENTKEZÉS SZABÁLYOS SESSION KEZELÉSSEL - 10 PONT
+        - [ ] Van lehetőség az oldalra való bejelentkezésre (0/2 pont)
+        - [ ] Ha bejelentkezéskor rossz adatokat adunk meg, akkor megfelelő hibaüzenetet kapunk (0/2 pont)
+        - [ ] A bejelentkezett felhasználó olyan (értelmes) oldal(aka)t is elér, amely(ek)et a nem bejelentkezett felhasználó nem (0/2 pont)
+        - [ ] A bejelentkezéshez kötött oldal(ak) nem elérhető(ek), csak a bejelentkezett felhasználóknak, különben átirányít a bejelentkezéshez (0/2 pont)
+        - [ ] Működő kijelentkezés (0/2 pont)
+      - [ ] BEJELENTKEZÉSHEZ KÖTÖTT FUNKCIÓK - 52 PONT
+        - [ ] A felhasználónak van lehetősége néhány adatának módosítására (pl. jelszó, születési dátum, bemutatkozás, stb.) (0/2/4 pont)
+        - [ ] A felhasználó tud profilképet feltölteni magának, ezt le is tudja cserélni, illetve az oldalon meg is jelenik (0/2/4 pont)
+        - [ ] A felhasználó tudja törölni a felhasználói fiókját, ilyenkor az összes adata törlődik (0/4 pont)
+        - [ ] A felhasználó meg tudja tekinteni más felhasználók profilját / publikus adatait (pl. felhasználónév, profilkép, leírás, stb.), továbbá beállítható, hogy milyen adatokat szeretnénk publikusan elérhetővé tenni (0/4/8 pont)
+        - [ ] A felhasználó különböző interakcióba léphet a weboldallal, ennek következményei vannak, melyek újbóli bejelentkezés után is megmaradnak (pl. termékeket tud kosárba helyezni, filmeket értékelni 1-5 csillaggal (és ezeket látja is, hogy mennyire értékelte korábban), ismerősként vehet fel más felhasználókat, stb.) (0/4/8 pont)
+        - [ ] A felhasználó tud üzenetet küldeni a többi felhasználónak (vagy néhány felhasználónak), akik ezt láthatják, és válaszolni tudnak neki (0/4/8 pont)
+        - [ ] Meg vannak valósítva különböző jogosultsági szintek (pl. felhasználó, admin). Az egyes jogosultsági szinttel rendelkező felhasználók több funkciót elérnek (pl. az admin tud letiltani felhasználókat, látja a rendeléseket, stb.) (0/4/8 pont)
+        - [ ] Egyéb, a felsoroltakban nem szereplő, megvalósított funkciók (0/4/8 pont)
     - [ ] Csak a beadandó file-okat tartalmazza a project de azokat mindet?
     - [ ] Minden URI relatív útvonallal van megadva? (ha máshova másolom a project-et is tökéletesen működik a weblap?)
     - [ ] Mind a ketten ugyanazt adtuk be?
     - [ ] zip-ben becsomagolva töltöttük fel?
-- [ ] **Második mérföldkő (2023.04.16):**
-  - [ ] ?
-  - [ ] ***Beadás előtt:***
-    - [ ] ?
 - [ ] **Védés**
   - [ ] Minden érthető mindkettőnknek a kódban? (Ha van kérdés, beszéljük át)
