@@ -117,7 +117,7 @@
     - [x] zip-ben becsomagolva töltöttük fel?
 - [ ] **Második mérföldkő (2023.04.16):**
   - [ ] db/users.txt mappa és file elkészítése a felhasználók letárolására
-  - [ ] db/img/ mappa létrehozása a user profilképek letárolására
+  - [ ] db/user_img/ mappa létrehozása a user profilképek letárolására
   - [ ] Csak a bejelentkezett felhasználó tudja a bolygókról szóló oldalakat elérni, a többit átirányítani a <tt>bejelentkezés</tt> oldalra
   - [ ] Jobb oldali menüpontok sorrendje:
     - [ ] Kijelentkezett felhasználó: Bejelentkezés, Regisztráció
@@ -142,17 +142,17 @@
       - [ ] Menüpont változás: Regisztráció -> Kijelentkezés
       - [ ] Menüpont változás: Bejelentkezés -> Profil
       - [ ] Új menüpont hozzáadása: Felhasználók
-      - [ ] Átirányítás: profil.php
+      - [ ] Átirányítás: index.php
   - [ ] Bejelentkezés
     - [ ] Ellenőrizni, hogy szerepel-e a db-ben user az adott email/jelszó-ra
     - [ ] Sikertelen bejelentkezés esetén:
       - [ ] Hiba üzenet arról, hogy miért volt sikertelen
-      - [ ] Átirányítás: login.php
+      - [ ] Átirányítás: bejelentkezes.php
     - [ ] Sikeres bejelentkezés esetén:
       - [ ] Menüpont változás: Regisztráció -> Kijelentkezés
       - [ ] Menüpont változás: Bejelentkezés -> Profil
       - [ ] Új menüpont hozzáadása: Felhasználók
-      - [ ] Átirányítás: profil.php
+      - [ ] Átirányítás: index.php
   - [ ] Profil
     - [ ] Csak bejelentkezett user láthatja
     - [ ] Legyen felül egy profilkép a user-ről, és file feltöltési lehetőség hozzá
@@ -169,7 +169,7 @@
     - [ ] Menüpont eltávolítása: Felhasználók
     - [ ] Menüpont változás: Profil -> Bejelentkezés
     - [ ] Menüpont változás: Kijelentkezés -> Regisztráció
-    - [ ] Átirányítás: login.php
+    - [ ] Átirányítás: bejelentkezes.php
   - [ ] ***Beadás előtt:***
     - [ ] Legfeljebb 1 kivétellel az összes HTML oldal szabványos (de legalább 5 szabványos HTML oldal el van készítve)
     - [ ] A bizalmas adatokat kezelő űrlapadatok továbbítása HTTP POST használatával van megoldva
