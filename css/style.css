@@ -72,23 +72,22 @@ nav ul li a:hover:not(.active) {
   display: grid;
   place-items: center;
   width: 400px;
-	background-color: #FFFFFF;
-	padding: 30px;
-	border: 5px solid #2b3467;
-	margin: 45px auto;
+  background-color: #ffffff;
+  padding: 30px;
+  border: 5px solid #2b3467;
+  margin: 45px auto;
 }
 
 div.belepes input[type="submit"] {
   margin-top: 20px;
-	width: 40%;
-	height: 30px;
-	border: none;
-	outline: none;
-	background-color: #2b3467;
-	font-size: 20px;
-	text-transform: capitalize;
-	color: white;
-
+  width: 40%;
+  height: 30px;
+  border: none;
+  outline: none;
+  background-color: #2b3467;
+  font-size: 20px;
+  text-transform: capitalize;
+  color: white;
 }
 
 main {
@@ -318,4 +317,48 @@ input[type="reset"] {
 
 audio {
   margin-top: -15px;
+}
+
+.kedvenc-bolygo {
+  display: flex;
+  justify-content: center;
+  margin-top: 3em;
+}
+
+body > main:nth-child(2) > div:nth-child(3) > input:nth-child(1) {
+  justify-content: left;
+}
+
+body > main:nth-child(2) > div:nth-child(3) {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 3em;
+  margin-top: 3em;
+}
+
+.profil-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: hidden;
+  padding-top: 3em;
+}
+
+.pub-kedvenc {
+  float: right;
+}
+
+#pub_kedvenc {
+  width: 40px;
+}
+
+#pub-kedvenc-label {
+  font-size: 1.3em;
+}
+
+.mentes {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 3em;
 }
