@@ -59,11 +59,11 @@
       dizájnnal jelenik meg) (0/2 pont)
         - [x] A menü interaktív: a kurzor rávitelére változik a menüpont kinézete (0/2 pont)
         - [x] A menü / oldal fejléc az oldal görgetésénél is látszik (0/2 pont)
-      - [ ] TARTALOM ANIMÁLÁSA - 14 PONT
+      - [x] TARTALOM ANIMÁLÁSA - 14 PONT
         - [x] Az oldal tartalma animálva jelenik meg (pl. az egyes elemek beúsznak, fokozatosan jelennek
       meg, stb.) (0/3/6 pont)
         - [x] Egyéb, igényesen elkészített animáció (elemekre, háttérre, stb.) (0/2/4 pont)
-        - [ ] Az oldalon lévő egyes elemek (ahol indokolt) a kurzorral interakcióba lépnek (pl. a gombok,
+        - [x] Az oldalon lévő egyes elemek (ahol indokolt) a kurzorral interakcióba lépnek (pl. a gombok,
       kártyák esetén) (0/2/4 pont)
       - [x] RESZPONZÍV DIZÁJN - 10 PONT
         - [x] Az elkészített HTML oldalak mindegyike reszponzív, különböző méretű kijelzőkön is
@@ -83,7 +83,7 @@
         - [x] A weboldal legalább 1 táblázatot tartalmaz (0/2 pont)
         - [x] Létezik olyan táblázat, amelynek van fejléce, ami másképpen jelenik meg (0/1 pont)
         - [ ] Létezik olyan táblázat, amely használ headers attribútumot megfelelő módon (0/1 pont)
-      - [ ] CSS HASZNÁLATA - 16 PONT
+      - [x] CSS HASZNÁLATA - 16 PONT
         - [x] A projekt tartalmaz legalább 1 CSS fájlt, és az fel is van használva (0/2 pont)
         - [x] Elem szelektor használva van legalább 1 helyen (0/1 pont)
         - [x] Id szelektor használva van legalább 1 helyen (0/1 pont)
@@ -104,7 +104,7 @@
         - [x] Listák használata (0/1 pont)
         - [ ] Flexbox vagy grid használata (0/2 pont)
       - [ ] HTML ELEMEK TESTRESZABÁSA - 10 PONT
-        - [ ] Szegély használata (border) (0/1 pont)
+        - [x] Szegély használata (border) (0/1 pont)
         - [x] Lekerekített sarkok használata (0/1 pont)
         - [x] Háttérszín / háttérkép használata (0/1 pont)
         - [x] Szövegek formázása (letter-spacing, line-height, text-align, text-decoration) (0/1 pont)
@@ -116,33 +116,32 @@
     - [x] Mind a ketten ugyanazt adtuk be?
     - [x] zip-ben becsomagolva töltöttük fel?
 - [ ] **Második mérföldkő (2023.04.16):**
-  - [ ] db/users.txt mappa és file elkészítése a felhasználók letárolására
-  - [ ] db/user_img/ mappa létrehozása a user profilképek letárolására
-  - [ ] Csak a bejelentkezett felhasználó tudja a bolygókról szóló oldalakat elérni, a többit átirányítani a <tt>bejelentkezés</tt> oldalra
+  - [x] db/users.txt mappa és file elkészítése a felhasználók letárolására
+  - [x] db/user_img/ mappa létrehozása a user profilképek letárolására
   - [ ] Jobb oldali menüpontok sorrendje:
     - [ ] Kijelentkezett felhasználó: Bejelentkezés, Regisztráció
     - [ ] Bejelentkezett felhasználó: Felhasználók, Profil, Kijelentkezés
   - [ ] Regisztráció
-    - [ ] Adatok ellenőrzése:
-      - [ ] Azonosak-e a megadott jelszavak
-      - [ ] Ki van-e töltve minden mező
-      - [ ] Email tartalmaz-e @-ot és utána pontot, van-e köztük legalább 1 karakter
-      - [ ] Foglalt-e az email cím
-    - [ ] Sikertelen regisztráció esetén:
-      - [ ] Hiba üzenet arról, hogy miért volt sikertelen
-      - [ ] A beírt adatok ne vesszenek el
-      - [ ] Átirányítás: register.php
+    - [x] Adatok ellenőrzése:
+      - [x] Azonosak-e a megadott jelszavak
+      - [x] Ki van-e töltve minden mező
+      - [x] Email tartalmaz-e @-ot és utána pontot, van-e köztük legalább 1 karakter
+      - [x] Foglalt-e az email cím
+    - [x] Sikertelen regisztráció esetén:
+      - [x] Hiba üzenet arról, hogy miért volt sikertelen
+      - [x] A beírt adatok ne vesszenek el
+      - [x] Átirányítás: register.php
     - [ ] Sikeres regisztráció esetén:
       - [ ] User adatok mentése:
-        - [ ] Az adatok kulcsa az input mező name attribútuma
-        - [ ] Minden megadott adathoz (kivéve jelszó) azt is elmenteni, hogy publikus (érték: true/false; kulcs: pub_<input-name> pl. pub_email)
-        - [ ] Kulcs: admin, érték: true/false; Az új user mindig: false
+        - [x] Az adatok kulcsa az input mező name attribútuma
+        - [x] Minden megadott adathoz (kivéve jelszó) azt is elmenteni, hogy publikus (érték: 'checked'/'''; kulcs: pub_<input-name> pl. pub_email)
+        - [x] Kulcs: admin, érték: 'checked'/'''; Az új user mindig: ''
         - [ ] Kulcs: img, érték: file elérési útvonala (a profil képekhez)
       - [ ] Session változók beállítása az összes user adatra
-      - [ ] Menüpont változás: Regisztráció -> Kijelentkezés
-      - [ ] Menüpont változás: Bejelentkezés -> Profil
+      - [x] Menüpont változás: Regisztráció -> Kijelentkezés
+      - [x] Menüpont változás: Bejelentkezés -> Profil
       - [ ] Új menüpont hozzáadása: Felhasználók
-      - [ ] Átirányítás: index.php
+      - [x] Átirányítás: index.php
   - [ ] Bejelentkezés
     - [ ] Ellenőrizni, hogy szerepel-e a db-ben user az adott email/jelszó-ra
     - [ ] Sikertelen bejelentkezés esetén:
@@ -152,9 +151,9 @@
       - [ ] Menüpont változás: Regisztráció -> Kijelentkezés
       - [ ] Menüpont változás: Bejelentkezés -> Profil
       - [ ] Új menüpont hozzáadása: Felhasználók
-      - [ ] Átirányítás: index.php
+      - [x] Átirányítás: index.php
   - [ ] Profil
-    - [ ] Csak bejelentkezett user láthatja
+    - [x] Csak bejelentkezett user láthatja
     - [ ] Legyen felül egy profilkép a user-ről, és file feltöltési lehetőség hozzá
     - [ ] Jelenjenek meg a user adatok egy két oszlopos táblázatban:
       - [ ] Első oszlop: A user adatai (ugyanolyan input mezőkben, mint amilyenekben a regisztráció során meg adtuk őket)
@@ -164,12 +163,12 @@
     - [ ] Táblázat az összes felhasználóról:
       - [ ] A felhasználók a táblázat sorai, az adataik az oszlopok
       - [ ] Plusz egy oszlop az admin jogról (checkbox)
-  - [ ] Kijelentkezés
-    - [ ] Session és Cookie törlés
-    - [ ] Menüpont eltávolítása: Felhasználók
-    - [ ] Menüpont változás: Profil -> Bejelentkezés
-    - [ ] Menüpont változás: Kijelentkezés -> Regisztráció
-    - [ ] Átirányítás: bejelentkezes.php
+  - [x] Kijelentkezés
+    - [x] Session és Cookie törlés
+    - [x] Menüpont eltávolítása: Felhasználók
+    - [x] Menüpont változás: Profil -> Bejelentkezés
+    - [x] Menüpont változás: Kijelentkezés -> Regisztráció
+    - [x] Átirányítás: bejelentkezes.php
   - [ ] ***Beadás előtt:***
     - [ ] Legfeljebb 1 kivétellel az összes HTML oldal szabványos (de legalább 5 szabványos HTML oldal el van készítve)
     - [ ] A bizalmas adatokat kezelő űrlapadatok továbbítása HTTP POST használatával van megoldva
