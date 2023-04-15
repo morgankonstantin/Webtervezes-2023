@@ -1,6 +1,158 @@
 <!DOCTYPE html>
 <html lang="hu">
 
+<?php
+    session_start();
+    include 'kozos.php';
+    $i = 0;
+
+    $errors = [];
+    $errorInput = "hibas-input";
+    processForm();
+
+    function processForm() {
+        if (isFormSent()) {
+            checkNev();
+            checkJelszo();
+            checkEmail();
+            checkTel();
+            checkSzulDatum();
+            checkIrszam();
+            checkVaros();
+            checkUtca();
+            checkKedvenc();
+            checkIfPasswordsAreEqual();
+            global $errors;
+            if (count($errors) == 0) {
+                saveUser(createUser($_POST));
+                $_SESSION['user'] = 1;
+                header("Location: index.php");
+            }
+        }
+    }
+
+    function isFormSent() {
+        if (isset($_POST['submit']))
+            return true;
+        return false;
+    }
+
+    function createUser($post) {
+        $user = $post;
+        unset($user['jelszoism']);
+        unset($user['submit']);
+        foreach (array_keys($user) as $key) {
+            if ($key != 'jelszo')
+                $user['pub_' . $key] = "checked";
+            else
+                $user['jelszo'] = createPasswordHash($user['jelszo']);
+        }
+        $user['id'] = findNextID();
+        $user['admin'] = '';
+        return $user;
+    }
+
+    function checkNev() {
+        global $errors;
+        if (strlen($_POST['nev']) < 2)
+            $errors['nev'] = "A név legalább 2 karakter legyen!";
+        if (!preg_match('/^[A-Za-záéíöőüűÁÉÍÖÜŐŰ .]+$/', $_POST['nev']))
+            $errors['nev'] = "A név csak betűkből állhat!";
+    }
+
+    function checkJelszo() {
+        if (strlen($_POST['jelszo']) < 6) {
+            global $errors;
+            $msg = "A jelszó min. 6 karakter legyen!";
+            $errors['jelszo'] = $msg;
+            $errors['jelszoism'] = $msg;
+        }
+    }
+
+    function checkEmail() {
+        if(!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
+            global $errors;
+            $errors['email'] = "Érvényes email címet írjon!";
+        }
+    }
+
+    function checkTel() {
+        if(!empty($_POST['tel']) && strlen($_POST['tel']) < 3) {
+            global $errors;
+            $errors['tel'] = "A szám érvénytelen!";
+        }
+    }
+
+    function checkSzulDatum() {
+        $dateDiff = date_diff(new DateTime('now'), new DateTime($_POST['szul-datum']));
+        if(!empty($_POST['szul-datum']) && ($dateDiff->format("%R%y") > -1 || $dateDiff->format("%R%y") < -120)) {
+            global $errors;
+            $errors['szul-datum'] = "A dátum valótlan!";
+        }
+    }
+
+    function checkIrszam() {
+        if(strlen($_POST['irszam']) < 2) {
+            global $errors;
+            $errors['irszam'] = "Valótlan irányítószám!";
+        }
+    }
+
+    function checkVaros() {
+        global $errors;
+        if(strlen($_POST['varos']) < 1)
+            $errors['varos'] = "Kötelező kitölteni!";
+        elseif (!preg_match('/^[A-Za-záéíöőüűÁÉÍÖÜŐŰ .]+$/', $_POST['varos']))
+            $errors['varos'] = "A város csak betűkböl állhat!";
+    }
+
+    function checkUtca() {
+        if(strlen($_POST['utca']) < 3) {
+            global $errors;
+            $errors['utca'] = "Valótlan adat!";
+        }
+    }
+
+    function checkKedvenc() {
+        if (!isset($_POST['kedvenc'])) {
+            global $errors;
+            $errors['kedvenc'] = "Nem adtál meg kedvenc bolygót!";
+        }
+    }
+
+    function checkIfPasswordsAreEqual() {
+        global $errors;
+        if (empty($errors['jelszo']) && $_POST['jelszo'] !== $_POST['jelszoism']) {
+            $msg = "A jelszók nem azonosak!";
+            $errors['jelszo'] = $msg;
+            $errors['jelszoism'] = $msg;
+        }
+    }
+
+    function isFieldOK($field) {
+        global $errors;
+        global $errorInput;
+        if (!empty($errors[$field]))
+            return $errorInput;
+        return '';
+    }
+
+    function getErrorLabel($field) {
+        global $errors;
+        if (!empty($errors[$field])) {
+            $msg = $errors[$field] . str_repeat("&nbsp;", 10);
+            return "<label class='hibas-label' for=\"$field\">$msg</label>";
+        }
+        return '';
+    }
+
+    function getPostVariable($variableName) {
+        if (isset($_POST[$variableName]))
+            return $_POST[$variableName];
+        return '';
+    }
+?>
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -42,28 +194,37 @@
             <h3>Kérjük töltse ki az alábbi regisztrációs űrlapot!</h3>
             <form action="register.php" method="post" enctype="multipart/form-data">
                 <div class="oszlop">
-                    <input id="nev" name="nev" type="text" placeholder="Név" maxlength="50" required /><br />
-                    <label for="nev">Név</label><br />
-                    <input id="jelszo" name="jelszo" type="password" placeholder="Jelszó" maxlength="64" required /><br />
-                    <label for="jelszo">Jelszó</label><br />
-                    <input id="jelszoism" name="jelszoism" type="password" placeholder="Jelszó megerősítése" maxlength="64" required /><br />
+                    <input class="<?=isFieldOK("nev")?>" id="nev" name="nev" type="text" placeholder="Név" maxlength="50"
+                           value="<?=getPostVariable('nev')?>" required /><br />
+                    <label for="nev">Név</label><?=getErrorLabel('nev')?><br />
+                    <input class="<?=isFieldOK("jelszo")?>" id="jelszo" name="jelszo" type="password" placeholder="Jelszó" maxlength="64"
+                           value="<?=getPostVariable('jelszo')?>" required /><br />
+                    <label for="jelszo">Jelszó</label><?=getErrorLabel('jelszo')?><br />
+                    <input class="<?=isFieldOK("jelszoism")?>" id="jelszoism" name="jelszoism" type="password" placeholder="Jelszó megerősítése"
+                           maxlength="64" value="<?=getPostVariable('jelszoism')?>" required /><br />
                     <label for="jelszoism">Jelszó megerősítése</label><br />
                 </div>
                 <div class="oszlop">
-                    <input id="email" name="email" type="email" placeholder="Email" maxlength="320" required /><br />
-                    <label for="email">Email</label><br />
-                    <input id="tel" name="tel" type="tel" placeholder="Telefonszám: +36301234567" maxlength="20" /><br />
-                    <label for="tel">Telefonszám</label><br />
-                    <input id="szul-datum" name="szul-datum" type="date" /><br />
-                    <label for="szul-datum">Születési dátum</label><br />
+                    <input class="<?=isFieldOK("email")?>" id="email" name="email" type="email" placeholder="Email"
+                           maxlength="320" value="<?=getPostVariable('email')?>" required /><br />
+                    <label for="email">Email</label><?=getErrorLabel('email')?><br />
+                    <input class="<?=isFieldOK("tel")?>" id="tel" name="tel" type="tel" placeholder="Telefonszám: +36301234567"
+                           maxlength="20" value="<?=getPostVariable('tel')?>" /><br />
+                    <label for="tel">Telefonszám</label><?=getErrorLabel('tel')?><br />
+                    <input class="<?=isFieldOK("szul-datum")?>" id="szul-datum" name="szul-datum" type="date"
+                           value="<?=getPostVariable('szul-datum')?>" /><br />
+                    <label for="szul-datum">Születési dátum</label><?=getErrorLabel('szul-datum')?><br />
                 </div>
                 <div>
-                    <input id="irszam" name="irszam" type="text" placeholder="Irányítószám" maxlength="10" required /><br />
-                    <label for="irszam">Irányítószám</label><br />
-                    <input id="varos" name="varos" type="text" placeholder="Város" maxlength="40" required /><br />
-                    <label for="varos">Város</label><br />
-                    <input id="utca" name="utca" type="text" placeholder="Utca, házszám..." maxlength="40" required /><br />
-                    <label for="utca">Utca, házszám...</label><br />
+                    <input class="<?=isFieldOK("irszam")?>" id="irszam" name="irszam" type="text" placeholder="Irányítószám"
+                           maxlength="10" value="<?=getPostVariable('irszam')?>" required /><br />
+                    <label for="irszam">Irányítószám</label><?=getErrorLabel('irszam')?><br />
+                    <input class="<?=isFieldOK("varos")?>" id="varos" name="varos" type="text" placeholder="Város" maxlength="40"
+                           value="<?=getPostVariable('varos')?>" required /><br />
+                    <label for="varos">Város</label><?=getErrorLabel('varos')?><br />
+                    <input class="<?=isFieldOK("utca")?>" id="utca" name="utca" type="text" placeholder="Utca, házszám..."
+                           maxlength="40" value="<?=getPostVariable('utca')?>" required /><br />
+                    <label for="utca">Utca, házszám...</label><?=getErrorLabel('utca')?><br />
                     <fieldset id="kedvenc-bolygo">
                         <legend>Kedvenc bolygó:</legend>
                         <label for="kedvenc-merkur">Merkúr: </label> <input id="kedvenc-merkur" name="kedvenc" type="radio" value="merkur" />
@@ -75,8 +236,9 @@
                         <label for="kedvenc-uranusz">Uránusz: </label> <input id="kedvenc-uranusz" name="kedvenc" type="radio" value="uranusz" />
                         <label for="kedvenc-neptunusz">Neptunusz: </label> <input id="kedvenc-neptunusz" name="kedvenc" type="radio" value="neptunusz" />
                     </fieldset>
+                    <?=getErrorLabel('kedvenc')?>
                     <div id="urlap-gombok">
-                        <input type="submit" value="Tovább" />
+                        <input name="submit" type="submit" value="Tovább" />
                         <input type="reset" value="Töröl" />
                     </div>
                 </div>

@@ -155,6 +155,20 @@ h4 {
   width: 900px;
 }
 
+.hibas-input {
+  background-color: #feedf0;
+  border-color: #991513;
+  color: #991513;
+}
+
+.hibas-label {
+  float: right;
+  color: #991513;
+  font-size: 14px;
+  font-family: "Roboto Mono", Helvetica, sans-serif;
+  vertical-align: top;
+}
+
 .oszlop {
   float: left;
   width: 300px;
