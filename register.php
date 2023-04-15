@@ -40,7 +40,7 @@
         <h1>Regisztráció</h1>
         <section class="urlap">
             <h3>Kérjük töltse ki az alábbi regisztrációs űrlapot!</h3>
-            <form action="register.html" method="post" enctype="multipart/form-data">
+            <form action="register.php" method="post" enctype="multipart/form-data">
                 <div class="oszlop">
                     <input id="nev" name="nev" type="text" placeholder="Név" maxlength="50" required /><br />
                     <label for="nev">Név</label><br />
