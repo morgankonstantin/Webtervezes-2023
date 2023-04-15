@@ -4,6 +4,8 @@
 <?php
     session_start();
     include 'kozos.php';
+    $i = 0;
+
     $errors = [];
     $errorInput = "hibas-input";
     processForm();
@@ -42,7 +44,10 @@
         foreach (array_keys($user) as $key) {
             if ($key != 'jelszo')
                 $user['pub_' . $key] = "checked";
+            else
+                $user['jelszo'] = createPasswordHash($user['jelszo']);
         }
+        $user['id'] = findNextID();
         $user['admin'] = '';
         return $user;
     }
@@ -51,7 +56,7 @@
         global $errors;
         if (strlen($_POST['nev']) < 2)
             $errors['nev'] = "A név legalább 2 karakter legyen!";
-        if (!preg_match('/^[A-Za-z .]+$/', $_POST['nev']))
+        if (!preg_match('/^[A-Za-záéíöőüűÁÉÍÖÜŐŰ .]+$/', $_POST['nev']))
             $errors['nev'] = "A név csak betűkből állhat!";
     }
 
@@ -97,7 +102,7 @@
         global $errors;
         if(strlen($_POST['varos']) < 1)
             $errors['varos'] = "Kötelező kitölteni!";
-        elseif (!preg_match('/^[A-Za-z .]+$/', $_POST['varos']))
+        elseif (!preg_match('/^[A-Za-záéíöőüűÁÉÍÖÜŐŰ .]+$/', $_POST['varos']))
             $errors['varos'] = "A város csak betűkböl állhat!";
     }
 

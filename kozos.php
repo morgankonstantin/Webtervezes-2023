@@ -21,9 +21,20 @@
   {
     $users = loadUsers();
     foreach ($users as $user) {
-      if ($user["email"] === $email && checkPassword($password, $user["password"]))
+      if ($user["email"] === $email && checkPassword($password, $user["jelszo"]))
         return $user;
     }
+  }
+
+  function findNextID() {
+    $users = loadUsers();
+    $id = 0;
+    foreach ($users as $user) {
+      if ($user['id'] >= $id) {
+        $id = $user['id'] + 1;
+      }
+    }
+    return $id;
   }
 
   function modifyUser($user) {
@@ -36,7 +47,7 @@
     while (!feof($reading)) {
       $line = fgets($reading);
       $dbUser = unserialize($line);
-      if ($dbUser["email"] === $user["email"]) {
+      if ($dbUser["id"] === $user["id"]) {
         $line = serialize($user);
         $replaced = true;
       }
@@ -60,7 +71,7 @@
     if ($file === FALSE)
       die("HIBA: A fájl megnyitása nem sikerült!");
 
-    fwrite($file, serialize($user));
+    fwrite($file, serialize($user) . "\n");
     fclose($file);
   }
 
