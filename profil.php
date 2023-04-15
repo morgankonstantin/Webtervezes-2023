@@ -37,8 +37,8 @@ if (!isset($_SESSION["user"])) {
                 <li><a href="bolygok/uranusz.php">Uránusz</a></li>
                 <li><a href="bolygok/neptunusz.php">Neptunusz</a></li>
                 <?php if (isset($_SESSION["user"])) { ?>
-                    <li id="belepes"><a class="active" href="profil.php">Profilom</a></li>
                     <li id="nav-regisztracio"><a href="kijelentkezes.php">Kijelentkezés</a></li>
+                    <li id="belepes"><a class="active" href="profil.php">Profilom</a></li>
                 <?php } else { ?>
                     <li id="belepes"><a class="active" href="belepes.php">Bejelentkezés</a></li>
                     <li id="nav-regisztracio"><a href="register.php">Regisztráció</a></li>
