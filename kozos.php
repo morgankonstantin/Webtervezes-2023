@@ -56,8 +56,10 @@
     while (!feof($reading)) {
       $line = fgets($reading);
       $dbUser = unserialize($line);
-      if ($dbUser["id"] === $user["id"]) {
-        $line = serialize($user);
+      if (isset($dbUser["id"]) && isset($user["id"]) && $dbUser["id"] === $user["id"]) {
+        if(isset($dbUser["jelszo"]) && isset($user["jelszo"]) && $dbUser["jelszo"] !== $user["jelszo"])
+          $user['jelszo'] = createPasswordHash($user['jelszo']);
+        $line = serialize($user) . "\n";
         $replaced = true;
       }
       fputs($writing, $line);
