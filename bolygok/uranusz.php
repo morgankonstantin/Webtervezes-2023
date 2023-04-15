@@ -29,11 +29,12 @@
                 <li><a class="active" href="uranusz.php">Uránusz</a></li>
                 <li><a href="neptunusz.php">Neptunusz</a></li>
                 <?php if (isset($_SESSION["user"])) { ?>
-                    <li id="nav-regisztracio"><a href="../kijelentkezes.php">Kijelentkezés</a></li>
-                    <li id="belepes"><a href="../profil.php">Profilom</a></li>
+                    <li class="right-menu"><a href="../kijelentkezes.php">Kijelentkezés</a></li>
+                    <li class="right-menu"><a href="../profil.php">Profilom</a></li>
+                    <li class="right-menu"><a href="../felhasznalok.php">Felhasználók</a></li>
                 <?php } else { ?>
-                    <li id="belepes"><a href="../belepes.php">Bejelentkezés</a></li>
-                    <li id="nav-regisztracio"><a href="../register.php">Regisztráció</a></li>
+                    <li class="right-menu"><a href="../belepes.php">Bejelentkezés</a></li>
+                    <li class="right-menu"><a href="../register.php">Regisztráció</a></li>
                 <?php } ?>
             </ul>
         </nav>

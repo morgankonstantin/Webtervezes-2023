@@ -59,11 +59,7 @@ nav ul li a:hover:not(.active) {
   background-color: #111;
 }
 
-#nav-regisztracio {
-  float: right;
-}
-
-#belepes {
+.right-menu {
   float: right;
 }
 
@@ -93,6 +89,7 @@ div.belepes input[type="submit"] {
 main {
   color: #2b3467;
   font-size: 1.3rem;
+  padding: 4em 0 0 0;
 }
 
 section {
@@ -283,9 +280,6 @@ input[type="reset"] {
     padding-left: 0.9em;
     padding-right: 1.3em;
   }
-  #nav-regisztracio {
-    float: left;
-  }
 }
 
 @media screen and (max-width: 978px) {
@@ -361,4 +355,31 @@ body > main:nth-child(2) > div:nth-child(3) {
   display: flex;
   justify-content: center;
   margin-bottom: 3em;
+}
+
+.table-felhasznalok {
+  width: 90%;
+}
+
+#table-admin {
+  width: 60px;
+}
+
+.img-profil {
+  display: block;
+  margin: auto;
+  height: 60px;
+  max-width: 100px;
+}
+
+.admin-checkbox {
+  position: relative;
+  top: -10px;
+  left: -10px;
+}
+
+#submit-admin {
+  display: block;
+  margin: 3em auto;
+  width: 190px;
 }
