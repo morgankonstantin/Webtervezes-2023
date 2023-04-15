@@ -4,8 +4,6 @@
 <?php
     session_start();
     include 'kozos.php';
-    $i = 0;
-
     $errors = [];
     $errorInput = "hibas-input";
     processForm();
@@ -70,10 +68,11 @@
     }
 
     function checkEmail() {
-        if(!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
-            global $errors;
+        global $errors;
+        if(isRegisteredEmail($_POST['email']))
+            $errors['email'] = "Az email cím már foglalt!";
+        if(!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL))
             $errors['email'] = "Érvényes email címet írjon!";
-        }
     }
 
     function checkTel() {

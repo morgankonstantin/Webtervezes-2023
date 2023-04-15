@@ -37,6 +37,15 @@
     return $id;
   }
 
+  function isRegisteredEmail($email) {
+    $users = loadUsers();
+    foreach ($users as $user) {
+      if ($user['email'] === $email)
+        return true;
+      return false;
+    }
+  }
+
   function modifyUser($user) {
     global $usersDB;
     $reading = fopen($usersDB, 'r');
