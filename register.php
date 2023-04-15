@@ -45,6 +45,7 @@
             else
                 $user['jelszo'] = createPasswordHash($user['jelszo']);
         }
+        $user['img'] = '';
         $user['id'] = findNextID();
         $user['admin'] = '';
         return $user;
