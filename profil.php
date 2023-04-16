@@ -24,6 +24,9 @@ if (isset($_POST["mentes"])) {
         $uzenet = "<strong>Hiba:</strong> Nem egyezik meg a jelszó!";
     }
 }
+
+$fajlfeltoltes_hiba = "";
+uploadProfilePicture($_SESSION["user"]["nev"]);
 ?>
 
 <!DOCTYPE html>
@@ -67,6 +70,27 @@ if (isset($_POST["mentes"])) {
     </header>
     <main>
         <h1>Profilom</h1>
+        <?php
+        // a profilkép elérési útvonalának eltárolása egy változóban
+
+        $profilkep = "db/uploaded_img/default.png";      // alapértelmezett kép, amit akkor jelenítünk meg, ha valakinek nincs feltöltött profilképe
+        $utvonal = "db/uploaded_img/" . $_SESSION["user"]["nev"]; // a kép neve a felhasználó nevével egyezik meg
+
+        $kiterjesztesek = ["png", "jpg", "jpeg"];     // a lehetséges kiterjesztések, amivel egy profilkép rendelkezhet
+
+        foreach ($kiterjesztesek as $kiterjesztes) {  // minden kiterjesztésre megnézzük, hogy létezik-e adott kiterjesztéssel profilképe a felhasználónak
+            if (file_exists($utvonal . "." . $kiterjesztes)) {
+                $profilkep = $utvonal . "." . $kiterjesztes;  // ha megtaláltuk a felhasználó profilképét, eltároljuk annak az elérési útvonalát egy változóban
+            }
+        }
+        ?>
+        <div class="img-form">
+            <img src="<?php echo $profilkep; ?>" alt="Profilkép" height="300">
+            <form action="profil.php" method="POST" enctype="multipart/form-data">
+                <input type="file" id="file-upload" name="profilkep" accept="image/*" /> <br />
+                <input type="submit" name="upload-img" value="Feltöltés" />
+            </form>
+        </div>
         <form action="profil.php" class="profil-table" method="post" enctype="multipart/form-data">
             <table border="1" style="display:flex;justify-content:center;align-items:center" class="profil-form">
 
