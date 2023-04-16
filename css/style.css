@@ -86,6 +86,11 @@ div.belepes input[type="submit"] {
   color: white;
 }
 
+#belepes-sikertelen {
+  color: #991513;
+  text-align: center;
+}
+
 main {
   color: #2b3467;
   font-size: 1.3rem;

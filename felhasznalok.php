@@ -39,7 +39,6 @@
 ?>
 <head>
     <meta charset="UTF-8" />
-    <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge" /> -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="css/style.css?<?php echo date('l jS \of F Y h:i:s A'); ?>" />
     <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon" />
@@ -102,12 +101,12 @@
                                     }
                                 ?>
                             </td>
-                            <td headers="felh-nev"><?=$user['nev']?></td>
-                            <td headers="felh-email"><?=$user['email']?></td>
-                            <td headers="felh-tel"><?=$user['tel']?></td>
-                            <td headers="felh-szul-datum"><?=$user['szul-datum']?></td>
-                            <td headers="felh-cim"><?=$user['irszam']?> <?=$user['varos']?>,<br /> <?=$user['utca']?></td>
-                            <td headers="felh-kedvenc"><?=$bolygoValueNameDict[$user['kedvenc']]?></td>
+                            <td headers="felh-nev"><?=$user['pub_nev'] ? $user['nev'] : ''?></td>
+                            <td headers="felh-email"><?=$user['pub_email'] ? $user['email'] : ''?></td>
+                            <td headers="felh-tel"><?=$user['pub_tel'] ? $user['tel'] : ''?></td>
+                            <td headers="felh-szul-datum"><?=$user['pub_szul-datum'] ? $user['szul-datum'] : ''?></td>
+                            <td headers="felh-cim"><?=$user['pub_irszam'] ? $user['irszam'] : ''?> <?=$user['pub_varos'] ? $user['varos'] : ''?>,<br /> <?=$user['pub_utca'] ? $user['utca'] : ''?></td>
+                            <td headers="felh-kedvenc"><?=$user['pub_kedvenc'] ? $bolygoValueNameDict[$user['kedvenc']] : ''?></td>
                             <td headers="felh-admin"><input class="admin-checkbox" type="checkbox" name="admin[]" value="<?=$user['id']?>"
                                     <?=$user['admin']?> <?=$admin ? '' : 'disabled' ?> /></td>
                         </tr>
