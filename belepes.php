@@ -72,11 +72,12 @@ if (isset($_POST["belepes"])) {
             <h4>Írja be az e-mail címét és jelszavát:</h4>
             <form action="belepes.php" method="POST" enctype="multipart/form-data">
                 <div class="belepes">
-                    <input id="email" name="email" type="email" placeholder="Email" maxlength="320" required /><br />
-                    <input id="jelszo" name="jelszo" type="password" placeholder="Jelszó" maxlength="64" required /><br />
+                    <input id="email" name="email" type="email" placeholder="Email" maxlength="320"/><br />
+                    <input id="jelszo" name="jelszo" type="password" placeholder="Jelszó" maxlength="64"/><br />
                     <input type="submit" name="belepes" value="Belépés" /> <br /><br />
                 </div>
             </form>
+            <?php echo $uzenet . "<br/>"; ?>
         </section>
     </main>
     <footer>
