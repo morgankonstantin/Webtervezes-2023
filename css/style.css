@@ -383,3 +383,10 @@ body > main:nth-child(2) > div:nth-child(3) {
   margin: 3em auto;
   width: 190px;
 }
+
+.mentes {
+  display: flex;
+  justify-content: center;
+
+}
+

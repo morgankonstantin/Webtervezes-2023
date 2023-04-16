@@ -1,8 +1,27 @@
 <?php
 session_start();
+include_once "kozos.php";
 
 if (!isset($_SESSION["user"])) {
     header("Location: login.php");
+}
+
+$uzenet = "";
+
+if (isset($_POST["mentes"])) {
+    if (trim($_POST["jelszoism"]) !== trim($_POST["jelszo"])) {
+        $uzenet = "<strong>Hiba:</strong> Nem egyezik meg a jelszó!";
+    }
+    foreach ($_SESSION as $key => $value) {
+        if (isset($_POST[$key])) {
+            if ($_POST[$key] !== $value) {
+                $_SESSION[$key] = $_POST[$key];
+            }
+        }
+        
+    }
+    modifyUser($_SESSION["user"]);
+    header("Location: profil.php");
 }
 
 ?>
@@ -20,7 +39,7 @@ if (!isset($_SESSION["user"])) {
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet" />
-    <title>A Naprendszer bolygói - Profilom</title>
+    <title>Profilom</title>
 </head>
 
 <body>
@@ -49,8 +68,9 @@ if (!isset($_SESSION["user"])) {
     </header>
     <main>
         <h1>Profilom</h1>
-        <table border="1" style="display:flex;justify-content:center;align-items:center" class="profil-form">
-            <form action="profil.php" class="profil-table">
+        <form action="profil.php" class="profil-table" method="post" enctype="multipart/form-data">
+            <table border="1" style="display:flex;justify-content:center;align-items:center" class="profil-form">
+
                 <tr>
                     <th>Adatok</th>
                     <th>Publikus</th>
@@ -76,7 +96,7 @@ if (!isset($_SESSION["user"])) {
                 <tr>
                     <td>
                         <label for="jelszoism">Jelszó megerősítése</label><br>
-                        <input type="password" id="jelszo" class="jelszo" value="<?php echo htmlspecialchars($_SESSION["user"]["jelszo"]); ?>">
+                        <input type="password" id="jelszoism" class="jelszo" name="jelszoism" value="<?php echo htmlspecialchars($_SESSION["user"]["jelszo"]); ?>">
                     </td>
                     <td>
                         <input type="hidden" name="jelszoism">
@@ -136,28 +156,29 @@ if (!isset($_SESSION["user"])) {
                         <input type="checkbox" name="pub_utca" id="pub_utca" <?= $_SESSION["user"]["pub_utca"] ?>>
                     </td>
                 </tr>
-            </form>
-        </table>
-        <div class="kedvenc-bolygo">
-            <fieldset id="kedvenc-bolygo">
-                <legend>Kedvenc bolygó:</legend>
-                <label for="kedvenc-merkur">Merkúr: </label> <input id="kedvenc-merkur" name="kedvenc" type="radio" value="merkur" />
-                <label for="kedvenc-venusz">Vénusz: </label> <input id="kedvenc-venusz" name="kedvenc" type="radio" value="venusz" /><br />
-                <label for="kedvenc-fold">Föld: </label> <input id="kedvenc-fold" name="kedvenc" type="radio" value="fold" checked />
-                <label for="kedvenc-mars">Mars: </label> <input id="kedvenc-mars" name="kedvenc" type="radio" value="mars" /><br />
-                <label for="kedvenc-jupiter">Jupiter: </label> <input id="kedvenc-jupiter" name="kedvenc" type="radio" value="jupiter" />
-                <label for="kedvenc-szaturnusz">Szaturnusz: </label> <input id="kedvenc-szaturnusz" name="kedvenc" type="radio" value="szaturnusz" /><br />
-                <label for="kedvenc-uranusz">Uránusz: </label> <input id="kedvenc-uranusz" name="kedvenc" type="radio" value="uranusz" />
-                <label for="kedvenc-neptunusz">Neptunusz: </label> <input id="kedvenc-neptunusz" name="kedvenc" type="radio" value="neptunusz" />
-                <div class="pub-kedvenc">
-                    <input type="checkbox" name="pub_kedvenc" id="pub_kedvenc" <?= $_SESSION["user"]["pub_kedvenc"] ?>>
-                    <label for="pub_kedvenc" id="pub-kedvenc-label">Publikus</label>
-                </div>
-            </fieldset>
-        </div>
-        <div class="mentes">
-            <input type="submit" value="Mentés">
-        </div>
+            </table>
+            <div class="kedvenc-bolygo">
+                <fieldset id="kedvenc-bolygo">
+                    <legend>Kedvenc bolygó:</legend>
+                    <label for="kedvenc-merkur">Merkúr: </label> <input id="kedvenc-merkur" name="kedvenc" type="radio" value="merkur" />
+                    <label for="kedvenc-venusz">Vénusz: </label> <input id="kedvenc-venusz" name="kedvenc" type="radio" value="venusz" /><br />
+                    <label for="kedvenc-fold">Föld: </label> <input id="kedvenc-fold" name="kedvenc" type="radio" value="fold" checked />
+                    <label for="kedvenc-mars">Mars: </label> <input id="kedvenc-mars" name="kedvenc" type="radio" value="mars" /><br />
+                    <label for="kedvenc-jupiter">Jupiter: </label> <input id="kedvenc-jupiter" name="kedvenc" type="radio" value="jupiter" />
+                    <label for="kedvenc-szaturnusz">Szaturnusz: </label> <input id="kedvenc-szaturnusz" name="kedvenc" type="radio" value="szaturnusz" /><br />
+                    <label for="kedvenc-uranusz">Uránusz: </label> <input id="kedvenc-uranusz" name="kedvenc" type="radio" value="uranusz" />
+                    <label for="kedvenc-neptunusz">Neptunusz: </label> <input id="kedvenc-neptunusz" name="kedvenc" type="radio" value="neptunusz" />
+                    <div class="pub-kedvenc">
+                        <input type="checkbox" name="pub_kedvenc" id="pub_kedvenc" <?= $_SESSION["user"]["pub_kedvenc"] ?>>
+                        <label for="pub_kedvenc" id="pub-kedvenc-label">Publikus</label>
+                    </div>
+                </fieldset>
+            </div>
+            <div class="mentes">
+                <input type="submit" name="mentes" value="Mentés">
+            </div>
+        </form>
+        <?php echo " . $uzenet . "; ?>
     </main>
     <footer>
         <p>Készítők: Konstantin Morgan</p>
