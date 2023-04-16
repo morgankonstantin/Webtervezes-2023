@@ -3,29 +3,28 @@ session_start();
 include "kozos.php";
 
 if (!isset($_SESSION["user"])) {
-    header("Location: login.php");
+    header("Location: belepes.php");
 }
 
 $uzenet = "";
 
 if (isset($_POST["mentes"])) {
-    if (trim($_POST["jelszoism"]) !== trim($_POST["jelszo"])) {
-        $uzenet = "<strong>Hiba:</strong> Nem egyezik meg a jelszó!";
-    }
-    foreach ($_SESSION as $key => $value) {
-        if (isset($_POST[$key])) {
-            if ($_POST[$key] !== $value) {
-                $_SESSION[$key] = $_POST[$key];
+    if ($_POST["jelszoism"] === $_POST["jelszo"]) {
+        foreach ($_SESSION['user'] as $key => $value) {
+            if (isset($_POST[$key]) && !empty($_POST[$key])) {
+                if ($_POST[$key] !== $value) {
+                    $_SESSION['user'][$key] = $_POST[$key];
+                }
+            } elseif (substr($key, 0, 4) === "pub_") {
+                $_SESSION['user'][$key] = '';
             }
         }
-        
+        modifyUser($_SESSION["user"]);
+    } else {
+        $uzenet = "<strong>Hiba:</strong> Nem egyezik meg a jelszó!";
     }
-    modifyUser($_SESSION["user"]);
-    header("Location: profil.php");
 }
-
 ?>
-
 
 <!DOCTYPE html>
 <html lang="hu">
@@ -81,7 +80,7 @@ if (isset($_POST["mentes"])) {
                         <input type="text" id="nev" class="nev" name="nev" value="<?php echo htmlspecialchars($_SESSION["user"]["nev"]); ?>" required>
                     </td>
                     <td>
-                        <input type="checkbox" name="pub_nev" id="pub_nev" <?= $_SESSION["user"]["pub_nev"] ?>>
+                        <input type="checkbox" name="pub_nev" id="pub_nev" value="checked" <?= $_SESSION["user"]["pub_nev"] ?>>
                     </td>
                 </tr>
                 <tr>
@@ -90,7 +89,6 @@ if (isset($_POST["mentes"])) {
                         <input type="password" id="jelszo" class="jelszo" name="jelszo" value="<?php echo htmlspecialchars($_SESSION["user"]["jelszo"]); ?>">
                     </td>
                     <td>
-                        <input type="hidden" name="jelszo">
                     </td>
                 </tr>
                 <tr>
@@ -99,7 +97,6 @@ if (isset($_POST["mentes"])) {
                         <input type="password" id="jelszoism" class="jelszo" name="jelszoism" value="<?php echo htmlspecialchars($_SESSION["user"]["jelszo"]); ?>">
                     </td>
                     <td>
-                        <input type="hidden" name="jelszoism">
                     </td>
                 </tr>
                 <tr>
@@ -108,7 +105,7 @@ if (isset($_POST["mentes"])) {
                         <input type="email" id="email" class="email" name="email" value="<?php echo htmlspecialchars($_SESSION["user"]["email"]); ?>">
                     </td>
                     <td>
-                        <input type="checkbox" name="pub_email" id="pub_email" <?= $_SESSION["user"]["pub_email"] ?>>
+                        <input type="checkbox" name="pub_email" id="pub_email" value="checked" <?= $_SESSION["user"]["pub_email"] ?>>
                     </td>
                 </tr>
                 <tr>
@@ -117,7 +114,7 @@ if (isset($_POST["mentes"])) {
                         <input type="tel" id="tel" class="tel" name="tel" value="<?php echo htmlspecialchars($_SESSION["user"]["tel"]); ?>">
                     </td>
                     <td>
-                        <input type="checkbox" name="pub_tel" id="pub_tel" <?= $_SESSION["user"]["pub_tel"] ?>>
+                        <input type="checkbox" name="pub_tel" id="pub_tel" value="checked" <?= $_SESSION["user"]["pub_tel"] ?>>
                     </td>
                 </tr>
                 <tr>
@@ -126,7 +123,7 @@ if (isset($_POST["mentes"])) {
                         <input type="date" name="szul-datum" id="szul-datum" class="szul-datum" value="<?php echo htmlspecialchars($_SESSION["user"]["szul-datum"]); ?>">
                     </td>
                     <td>
-                        <input type="checkbox" name="pub_szul-datum" id="pub_szul-datum" <?= $_SESSION["user"]["pub_szul-datum"] ?>>
+                        <input type="checkbox" name="pub_szul-datum" id="pub_szul-datum" value="checked" <?= $_SESSION["user"]["pub_szul-datum"] ?>>
                     </td>
                 </tr>
                 <tr>
@@ -135,7 +132,7 @@ if (isset($_POST["mentes"])) {
                         <input type="text" name="irszam" id="irszam" value="<?php echo htmlspecialchars($_SESSION["user"]["irszam"]); ?>">
                     </td>
                     <td>
-                        <input type="checkbox" name="pub_irszam" id="pub_irszam" <?= $_SESSION["user"]["pub_irszam"] ?>>
+                        <input type="checkbox" name="pub_irszam" id="pub_irszam" value="checked" <?= $_SESSION["user"]["pub_irszam"] ?>>
                     </td>
                 </tr>
                 <tr>
@@ -144,7 +141,7 @@ if (isset($_POST["mentes"])) {
                         <input type="text" name="varos" id="varos" value="<?php echo htmlspecialchars($_SESSION["user"]["varos"]); ?>">
                     </td>
                     <td>
-                        <input type="checkbox" name="pub_varos" id="pub_varos" <?= $_SESSION["user"]["pub_varos"] ?>>
+                        <input type="checkbox" name="pub_varos" id="pub_varos" value="checked" <?= $_SESSION["user"]["pub_varos"] ?>>
                     </td>
                 </tr>
                 <tr>
@@ -153,37 +150,38 @@ if (isset($_POST["mentes"])) {
                         <input type="text" name="utca" id="utca" value="<?php echo htmlspecialchars($_SESSION["user"]["utca"]); ?>">
                     </td>
                     <td>
-                        <input type="checkbox" name="pub_utca" id="pub_utca" <?= $_SESSION["user"]["pub_utca"] ?>>
+                        <input type="checkbox" name="pub_utca" id="pub_utca" value="checked" <?= $_SESSION["user"]["pub_utca"] ?>>
                     </td>
                 </tr>
-            </form>
-        </table>
-        <div class="kedvenc-bolygo">
-            <fieldset id="kedvenc-bolygo">
-                <legend>Kedvenc bolygó:</legend>
-                <label for="kedvenc-merkur">Merkúr: </label> <input id="kedvenc-merkur" name="kedvenc" type="radio" value="merkur" <?=isKedvenc("merkur")?> />
-                <label for="kedvenc-venusz">Vénusz: </label> <input id="kedvenc-venusz" name="kedvenc" type="radio" value="venusz" <?=isKedvenc("venusz")?> /><br />
-                <label for="kedvenc-fold">Föld: </label> <input id="kedvenc-fold" name="kedvenc" type="radio" value="fold" <?=isKedvenc("fold")?> />
-                <label for="kedvenc-mars">Mars: </label> <input id="kedvenc-mars" name="kedvenc" type="radio" value="mars" <?=isKedvenc("mars")?> /><br />
-                <label for="kedvenc-jupiter">Jupiter: </label> <input id="kedvenc-jupiter" name="kedvenc" type="radio" value="jupiter" <?=isKedvenc("jupiter")?> />
-                <label for="kedvenc-szaturnusz">Szaturnusz: </label> <input id="kedvenc-szaturnusz" name="kedvenc" type="radio" value="szaturnusz" <?=isKedvenc("szaturnusz")?> /><br />
-                <label for="kedvenc-uranusz">Uránusz: </label> <input id="kedvenc-uranusz" name="kedvenc" type="radio" value="uranusz" <?=isKedvenc("uranusz")?> />
-                <label for="kedvenc-neptunusz">Neptunusz: </label> <input id="kedvenc-neptunusz" name="kedvenc" type="radio" value="neptunusz" <?=isKedvenc("neptunusz")?> />
-                <div class="pub-kedvenc">
-                    <input type="checkbox" name="pub_kedvenc" id="pub_kedvenc" <?= $_SESSION["user"]["pub_kedvenc"] ?>>
-                    <label for="pub_kedvenc" id="pub-kedvenc-label">Publikus</label>
-                </div>
-            </fieldset>
-        </div>
-        <div class="mentes">
-            <input type="submit" value="Mentés">
-        </div>
+            </table>
+            <div class="kedvenc-bolygo">
+                <fieldset id="kedvenc-bolygo">
+                    <legend>Kedvenc bolygó:</legend>
+                    <label for="kedvenc-merkur">Merkúr: </label> <input id="kedvenc-merkur" name="kedvenc" type="radio" value="merkur" <?=isKedvenc("merkur")?> />
+                    <label for="kedvenc-venusz">Vénusz: </label> <input id="kedvenc-venusz" name="kedvenc" type="radio" value="venusz" <?=isKedvenc("venusz")?> /><br />
+                    <label for="kedvenc-fold">Föld: </label> <input id="kedvenc-fold" name="kedvenc" type="radio" value="fold" <?=isKedvenc("fold")?> />
+                    <label for="kedvenc-mars">Mars: </label> <input id="kedvenc-mars" name="kedvenc" type="radio" value="mars" <?=isKedvenc("mars")?> /><br />
+                    <label for="kedvenc-jupiter">Jupiter: </label> <input id="kedvenc-jupiter" name="kedvenc" type="radio" value="jupiter" <?=isKedvenc("jupiter")?> />
+                    <label for="kedvenc-szaturnusz">Szaturnusz: </label> <input id="kedvenc-szaturnusz" name="kedvenc" type="radio" value="szaturnusz" <?=isKedvenc("szaturnusz")?> /><br />
+                    <label for="kedvenc-uranusz">Uránusz: </label> <input id="kedvenc-uranusz" name="kedvenc" type="radio" value="uranusz" <?=isKedvenc("uranusz")?> />
+                    <label for="kedvenc-neptunusz">Neptunusz: </label> <input id="kedvenc-neptunusz" name="kedvenc" type="radio" value="neptunusz" <?=isKedvenc("neptunusz")?> />
+                    <div class="pub-kedvenc">
+                        <input type="checkbox" name="pub_kedvenc" id="pub_kedvenc" value="checked" <?= $_SESSION["user"]["pub_kedvenc"] ?>>
+                        <label for="pub_kedvenc" id="pub-kedvenc-label">Publikus</label>
+                    </div>
+                </fieldset>
+            </div>
+            <div class="mentes">
+                <input type="submit" name="mentes" value="Mentés">
+            </div>
+            <?="<p id='uzenet-sikertelen'>$uzenet</p><br />"?>
+        </form>
     </main>
     <footer>
         <p>Készítők: Konstantin Morgan</p>
         <p>email: <a href="mailto:Konstantin.Morgan@stud.u-szeged.hu">Konstantin.Morgan@stud.u-szeged.hu</a></p>
         <p>Slezák Attila</p>
-        <p>email: <a href="mailto:h880402@stud.u-szeged.hu">h880402@stud.u-szeged.hu</a></p>
+        <p>email: <a href="mailto:Slezak.Attila@stud.u-szeged.hu">Slezak.Attila@stud.u-szeged.hu</a></p>
     </footer>
 </body>
 

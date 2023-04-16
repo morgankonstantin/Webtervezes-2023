@@ -2,6 +2,9 @@
 <html lang="hu">
 <?php
     session_start();
+    if (!isset($_SESSION["user"])) {
+        header("Location: belepes.php");
+    }
     include "kozos.php";
     $users = loadUsers();
     $admin = $_SESSION['user']['admin'];
