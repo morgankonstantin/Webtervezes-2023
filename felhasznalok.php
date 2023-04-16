@@ -3,6 +3,36 @@
 <?php
     session_start();
     include "kozos.php";
+    $users = loadUsers();
+    processForm();
+
+    function processForm() {
+        if (isFormSent()) {
+            global $users;
+            foreach ($users as &$user) {
+                $found = 0;
+                foreach ($_POST["admin"] as $value) {
+                    if($user['id'] == $value) {
+                        if(!$user['admin']) {
+                            $user['admin'] = 'checked';
+                            modifyUser($user);
+                        }
+                        $found = 1;
+                    }
+                }
+                if (!$found && $user['admin']) {
+                    $user['admin'] = '';
+                    modifyUser($user);
+                }
+            }
+        }
+    }
+
+    function isFormSent() {
+        if (isset($_POST['submit']))
+            return true;
+        return false;
+    }
 ?>
 <head>
     <meta charset="UTF-8" />
@@ -58,7 +88,7 @@
                 </thead>
                 <tbody>
                 <?php
-                    $users = loadUsers();
+                    global $bolygoValueNameDict;
                     foreach ($users as $user) {?>
                         <tr>
                             <td headers="felh-profilkep">
@@ -74,13 +104,13 @@
                             <td headers="felh-tel"><?=$user['tel']?></td>
                             <td headers="felh-szul-datum"><?=$user['szul-datum']?></td>
                             <td headers="felh-cim"><?=$user['irszam']?> <?=$user['varos']?>,<br /> <?=$user['utca']?></td>
-                            <td headers="felh-kedvenc"><?=$user['kedvenc']?></td>
-                            <td headers="felh-admin"><input class="admin-checkbox" type="checkbox" name="admin" value="<?=$user['id']?>" <?=$user['admin']?> /></td>
+                            <td headers="felh-kedvenc"><?=$bolygoValueNameDict[$user['kedvenc']]?></td>
+                            <td headers="felh-admin"><input class="admin-checkbox" type="checkbox" name="admin[]" value="<?=$user['id']?>" <?=$user['admin']?> /></td>
                         </tr>
                 <?php } ?>
                 </tbody>
             </table>
-            <input type="submit" id="submit-admin" value="Admin Jogok Mentése">
+            <input type="submit" name="submit" id="submit-admin" value="Admin Jogok Mentése">
         </form>
     </main>
     <footer>
