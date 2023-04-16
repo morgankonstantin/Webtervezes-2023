@@ -38,7 +38,7 @@
     - [ ] Responsive? Android-on is jól jelenik meg?
     - [x] Minden kép az img mappában van?
     - [x] Minden css a css mappában van?
-    - [ ] ÁLTALÁNOS SZEMPONTOK (MAX: 45 PONT):
+    - [x] ÁLTALÁNOS SZEMPONTOK (MAX: 45 PONT):
       - [x] FELHASZNÁLÓI ÉLMÉNY - 24 PONT:
         - [x] A HTML oldalak egységes dizájnnal készültek, minden oldal hasonló felépítés és egységes
       dizájnt használ (0/2/4 pont)
@@ -79,10 +79,10 @@
       - [x] STRUKTURÁLIS FELÉPÍTÉS - 3 PONT
         - [x] A weboldal HTML5 elemek megfelelő használatával van kialakítva (header, footer, nav, aside,
       main, section, article) (mindegyik 1 pont, max 3 pont)
-      - [ ] TÁBLÁZATOK - 4 PONT
+      - [x] TÁBLÁZATOK - 4 PONT
         - [x] A weboldal legalább 1 táblázatot tartalmaz (0/2 pont)
         - [x] Létezik olyan táblázat, amelynek van fejléce, ami másképpen jelenik meg (0/1 pont)
-        - [ ] Létezik olyan táblázat, amely használ headers attribútumot megfelelő módon (0/1 pont)
+        - [x] Létezik olyan táblázat, amely használ headers attribútumot megfelelő módon (0/1 pont)
       - [x] CSS HASZNÁLATA - 16 PONT
         - [x] A projekt tartalmaz legalább 1 CSS fájlt, és az fel is van használva (0/2 pont)
         - [x] Elem szelektor használva van legalább 1 helyen (0/1 pont)
@@ -118,10 +118,10 @@
 - [ ] **Második mérföldkő (2023.04.16):**
   - [x] db/users.txt mappa és file elkészítése a felhasználók letárolására
   - [x] db/user_img/ mappa létrehozása a user profilképek letárolására
-  - [ ] Jobb oldali menüpontok sorrendje:
-    - [ ] Kijelentkezett felhasználó: Bejelentkezés, Regisztráció
-    - [ ] Bejelentkezett felhasználó: Felhasználók, Profil, Kijelentkezés
-  - [ ] Regisztráció
+  - [x] Jobb oldali menüpontok sorrendje:
+    - [x] Kijelentkezett felhasználó: Regisztráció, Bejelentkezés
+    - [x] Bejelentkezett felhasználó: Felhasználók, Profil, Kijelentkezés
+  - [x] Regisztráció
     - [x] Adatok ellenőrzése:
       - [x] Azonosak-e a megadott jelszavak
       - [x] Ki van-e töltve minden mező
@@ -131,38 +131,39 @@
       - [x] Hiba üzenet arról, hogy miért volt sikertelen
       - [x] A beírt adatok ne vesszenek el
       - [x] Átirányítás: register.php
-    - [ ] Sikeres regisztráció esetén:
-      - [ ] User adatok mentése:
+    - [x] Sikeres regisztráció esetén:
+      - [x] User adatok mentése:
         - [x] Az adatok kulcsa az input mező name attribútuma
         - [x] Minden megadott adathoz (kivéve jelszó) azt is elmenteni, hogy publikus (érték: 'checked'/'''; kulcs: pub_<input-name> pl. pub_email)
         - [x] Kulcs: admin, érték: 'checked'/'''; Az új user mindig: ''
-        - [ ] Kulcs: img, érték: file elérési útvonala (a profil képekhez)
-      - [ ] Session változók beállítása az összes user adatra
+        - [x] Kulcs: img, érték: file elérési útvonala (a profil képekhez)
+      - [x] Session változók beállítása az összes user adatra
       - [x] Menüpont változás: Regisztráció -> Kijelentkezés
       - [x] Menüpont változás: Bejelentkezés -> Profil
-      - [ ] Új menüpont hozzáadása: Felhasználók
+      - [x] Új menüpont hozzáadása: Felhasználók
       - [x] Átirányítás: index.php
   - [ ] Bejelentkezés
-    - [ ] Ellenőrizni, hogy szerepel-e a db-ben user az adott email/jelszó-ra
+    - [x] Ellenőrizni, hogy szerepel-e a db-ben user az adott email/jelszó-ra
     - [ ] Sikertelen bejelentkezés esetén:
       - [ ] Hiba üzenet arról, hogy miért volt sikertelen
-      - [ ] Átirányítás: bejelentkezes.php
-    - [ ] Sikeres bejelentkezés esetén:
-      - [ ] Menüpont változás: Regisztráció -> Kijelentkezés
-      - [ ] Menüpont változás: Bejelentkezés -> Profil
-      - [ ] Új menüpont hozzáadása: Felhasználók
+      - [x] Átirányítás: bejelentkezes.php
+    - [x] Sikeres bejelentkezés esetén:
+      - [x] Menüpont változás: Regisztráció -> Kijelentkezés
+      - [x] Menüpont változás: Bejelentkezés -> Profil
+      - [x] Új menüpont hozzáadása: Felhasználók
       - [x] Átirányítás: index.php
   - [ ] Profil
     - [x] Csak bejelentkezett user láthatja
     - [ ] Legyen felül egy profilkép a user-ről, és file feltöltési lehetőség hozzá
-    - [ ] Jelenjenek meg a user adatok egy két oszlopos táblázatban:
-      - [ ] Első oszlop: A user adatai (ugyanolyan input mezőkben, mint amilyenekben a regisztráció során meg adtuk őket)
-      - [ ] Második oszlop: Checkbox, hogy az adat publikus-e (jelszót ne lehessen publikusra állítani!)
+    - [x] Jelenjenek meg a user adatok egy két oszlopos táblázatban:
+      - [x] Első oszlop: A user adatai (ugyanolyan input mezőkben, mint amilyenekben a regisztráció során meg adtuk őket)
+      - [x] Második oszlop: Checkbox, hogy az adat publikus-e (jelszót ne lehessen publikusra állítani!)
   - [ ] Felhasználók
-    - [ ] Csak bejelentkezett user láthatja
-    - [ ] Táblázat az összes felhasználóról:
-      - [ ] A felhasználók a táblázat sorai, az adataik az oszlopok
-      - [ ] Plusz egy oszlop az admin jogról (checkbox)
+    - [x] Csak bejelentkezett user láthatja
+    - [x] Táblázat az összes felhasználóról:
+      - [x] A felhasználók a táblázat sorai, az adataik az oszlopok
+      - [x] Plusz egy oszlop az admin jogról (checkbox)
+    - [ ] Admin legyen képes adni vagy elvenni admin jogot
   - [x] Kijelentkezés
     - [x] Session és Cookie törlés
     - [x] Menüpont eltávolítása: Felhasználók
@@ -171,7 +172,7 @@
     - [x] Átirányítás: bejelentkezes.php
   - [ ] ***Beadás előtt:***
     - [ ] Legfeljebb 1 kivétellel az összes HTML oldal szabványos (de legalább 5 szabványos HTML oldal el van készítve)
-    - [ ] A bizalmas adatokat kezelő űrlapadatok továbbítása HTTP POST használatával van megoldva
+    - [x] A bizalmas adatokat kezelő űrlapadatok továbbítása HTTP POST használatával van megoldva
     - [ ] ÁLTALÁNOS SZEMPONTOK (MAX: 25 PONT)
       - [ ] FELHASZNÁLÓI ÉLMÉNY - 17 PONT
         - [x] Az elkészített weboldalak logikusan vannak felépítve, egyértelmű, hogy milyen műveleteket lehet csinálni, hogyan, egyértelműen jelezve van minden szükséges információ (0/1/3 pont)
@@ -190,7 +191,7 @@
         - [ ] Sütik értelmes módon való használata (0/3 pont)
     - [ ] MEGVALÓSÍTOTT FUNKCIÓK (MAX: 65 PONT)
       - [ ] REGISZTRÁCIÓ - 13 PONT
-        - [ ] Van működő regisztráció, a helyes regisztráció hatására az új felhasználó adatai eltárolódnak (0/2 pont)
+        - [x] Van működő regisztráció, a helyes regisztráció hatására az új felhasználó adatai eltárolódnak (0/2 pont)
         - [ ] Minden kötelezően kitöltendő űrlapmező kitöltése szerveroldalon is ellenőrizve van (0/2 pont)
         - [ ] Ha foglalt a felhasználónév (vagy e-mail cím), akkor nem regisztrálja be az új felhasználót (0/2 pont)
         - [ ] A jelszót két alkalommal kell beírni, ezek azonossága vizsgálva van szerver oldalon(0/2 pont)
