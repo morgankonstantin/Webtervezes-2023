@@ -26,7 +26,7 @@ if (isset($_POST["mentes"])) {
 }
 
 $fajlfeltoltes_hiba = "";
-uploadProfilePicture($_SESSION["user"]["nev"]);
+uploadProfilePicture($_SESSION["user"]);
 ?>
 
 <!DOCTYPE html>
@@ -72,17 +72,7 @@ uploadProfilePicture($_SESSION["user"]["nev"]);
         <h1>Profilom</h1>
         <?php
         // a profilkép elérési útvonalának eltárolása egy változóban
-
-        $profilkep = "db/uploaded_img/default.png";      // alapértelmezett kép, amit akkor jelenítünk meg, ha valakinek nincs feltöltött profilképe
-        $utvonal = "db/uploaded_img/" . $_SESSION["user"]["nev"]; // a kép neve a felhasználó nevével egyezik meg
-
-        $kiterjesztesek = ["png", "jpg", "jpeg"];     // a lehetséges kiterjesztések, amivel egy profilkép rendelkezhet
-
-        foreach ($kiterjesztesek as $kiterjesztes) {  // minden kiterjesztésre megnézzük, hogy létezik-e adott kiterjesztéssel profilképe a felhasználónak
-            if (file_exists($utvonal . "." . $kiterjesztes)) {
-                $profilkep = $utvonal . "." . $kiterjesztes;  // ha megtaláltuk a felhasználó profilképét, eltároljuk annak az elérési útvonalát egy változóban
-            }
-        }
+        $profilkep = $_SESSION["user"]["img"] ?: "db/uploaded_img/default.png";
         ?>
         <div class="img-form">
             <img src="<?php echo $profilkep; ?>" alt="Profilkép" height="300">

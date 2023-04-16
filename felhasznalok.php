@@ -100,7 +100,7 @@
                                 <?php
                                     if (!empty($user['img'])) {
                                         $url = $user['img'];
-                                        echo "<a href=$url><img class='img-profil' src=$url alt=''></a>";
+                                        echo "<a href=\"$url\"><img class='img-profil' src=\"$url\" alt=''></a>";
                                     }
                                 ?>
                             </td>
