@@ -4,10 +4,11 @@
     session_start();
     include "kozos.php";
     $users = loadUsers();
+    $admin = $_SESSION['user']['admin'];
     processForm();
 
     function processForm() {
-        if (isFormSent()) {
+        if ($_SESSION['user']['admin'] && isFormSent()) {
             global $users;
             foreach ($users as &$user) {
                 $found = 0;
@@ -20,10 +21,12 @@
                         $found = 1;
                     }
                 }
-                if (!$found && $user['admin']) {
+                if (!$found && $user['admin'] && $user['id'] !== $_SESSION['user']['id']) {
                     $user['admin'] = '';
                     modifyUser($user);
                 }
+                if ($_SESSION['user']['id'] == $user['id'])
+                    $_SESSION['user'] = $user;
             }
         }
     }
@@ -105,12 +108,13 @@
                             <td headers="felh-szul-datum"><?=$user['szul-datum']?></td>
                             <td headers="felh-cim"><?=$user['irszam']?> <?=$user['varos']?>,<br /> <?=$user['utca']?></td>
                             <td headers="felh-kedvenc"><?=$bolygoValueNameDict[$user['kedvenc']]?></td>
-                            <td headers="felh-admin"><input class="admin-checkbox" type="checkbox" name="admin[]" value="<?=$user['id']?>" <?=$user['admin']?> /></td>
+                            <td headers="felh-admin"><input class="admin-checkbox" type="checkbox" name="admin[]" value="<?=$user['id']?>"
+                                    <?=$user['admin']?> <?=$admin ? '' : 'disabled' ?> /></td>
                         </tr>
                 <?php } ?>
                 </tbody>
             </table>
-            <input type="submit" name="submit" id="submit-admin" value="Admin Jogok Mentése">
+            <?=$admin ? '<input type="submit" name="submit" id="submit-admin" value="Admin Jogok Mentése">' : ''?>
         </form>
     </main>
     <footer>
@@ -121,7 +125,7 @@
         </p>
         <p>Slezák Attila</p>
         <p>
-            email: <a href="mailto:h880402@stud.u-szeged.hu">h880402@stud.u-szeged.hu</a>
+            email: <a href="mailto:Slezak.Attila@stud.u-szeged.hu">Slezak.Attila@stud.u-szeged.hu</a>
         </p>
     </footer>
 </body>

@@ -209,7 +209,7 @@
     </p>
     <p>Slezák Attila</p>
     <p>
-      email: <a href="mailto:h880402@stud.u-szeged.hu">h880402@stud.u-szeged.hu</a>
+      email: <a href="mailto:Slezak.Attila@stud.u-szeged.hu">Slezak.Attila@stud.u-szeged.hu</a>
     </p>
   </footer>
 </body>
