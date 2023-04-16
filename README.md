@@ -142,10 +142,10 @@
       - [x] Menüpont változás: Bejelentkezés -> Profil
       - [x] Új menüpont hozzáadása: Felhasználók
       - [x] Átirányítás: index.php
-  - [ ] Bejelentkezés
+  - [x] Bejelentkezés
     - [x] Ellenőrizni, hogy szerepel-e a db-ben user az adott email/jelszó-ra
-    - [ ] Sikertelen bejelentkezés esetén:
-      - [ ] Hiba üzenet arról, hogy miért volt sikertelen
+    - [x] Sikertelen bejelentkezés esetén:
+      - [x] Hiba üzenet arról, hogy miért volt sikertelen
       - [x] Átirányítás: bejelentkezes.php
     - [x] Sikeres bejelentkezés esetén:
       - [x] Menüpont változás: Regisztráció -> Kijelentkezés
@@ -158,12 +158,15 @@
     - [x] Jelenjenek meg a user adatok egy két oszlopos táblázatban:
       - [x] Első oszlop: A user adatai (ugyanolyan input mezőkben, mint amilyenekben a regisztráció során meg adtuk őket)
       - [x] Második oszlop: Checkbox, hogy az adat publikus-e (jelszót ne lehessen publikusra állítani!)
-  - [ ] Felhasználók
+    - [ ] A user legyen képes módosítani és elmenteni a módosított adatait
+  - [x] Felhasználók
     - [x] Csak bejelentkezett user láthatja
     - [x] Táblázat az összes felhasználóról:
       - [x] A felhasználók a táblázat sorai, az adataik az oszlopok
       - [x] Plusz egy oszlop az admin jogról (checkbox)
-    - [ ] Admin legyen képes adni vagy elvenni admin jogot
+    - [x] Admin legyen képes adni vagy elvenni admin jogot
+    - [x] Az admin a saját jogát ne vehesse el
+    - [x] Aki nem admin, annak ne legyen joga adni vagy elvenni más jogát
   - [x] Kijelentkezés
     - [x] Session és Cookie törlés
     - [x] Menüpont eltávolítása: Felhasználók
@@ -178,11 +181,11 @@
         - [x] Az elkészített weboldalak logikusan vannak felépítve, egyértelmű, hogy milyen műveleteket lehet csinálni, hogyan, egyértelműen jelezve van minden szükséges információ (0/1/3 pont)
         - [x] Az oldalakon minden információ jól olvasható (pl. nem fekete háttéren sötét betűk), nem lógnak egybe a szövegek vagy egyéb elemek, van elegendő hely hagyva az elemek között, stb. (0/1/3 pont)
         - [ ] Az oldalon nincsenek hibák: nem jelennek meg warningok, notice-ok, vagy egyéb rosszul beállított elemek (pl. img tag, érvénytelen képpel), minden ott lévő funkció működik (0/3 pont)
-        - [ ] Az űrlapok intuitívak, és a felhasználó számára jelezve van, hogy mi a követelmény az adott input mezőre nézve (pl. a jelszó legalább 8 karakter), ezek nem az űrlap elküldése után jutnak a felhasználó tudtára (0/3 pont)
-        - [ ] A megvalósított funkciók használata kényelmes (0/2/5 pont)
+        - [x] Az űrlapok intuitívak, és a felhasználó számára jelezve van, hogy mi a követelmény az adott input mezőre nézve (pl. a jelszó legalább 8 karakter), ezek nem az űrlap elküldése után jutnak a felhasználó tudtára (0/3 pont)
+        - [x] A megvalósított funkciók használata kényelmes (0/2/5 pont)
       - [ ] MENÜ - 4 PONT
-        - [ ] A rendelkezésre álló menüpontok minden oldalon láthatóak, a navigáció közöttük megfelelően működik (0/1 pont)
-        - [ ] A felhasználó mindig tudja, hogy melyik oldalon van éppen (pl. az aktuális menüpont más dizájnnal jelenik meg) (0/1 pont)
+        - [x] A rendelkezésre álló menüpontok minden oldalon láthatóak, a navigáció közöttük megfelelően működik (0/1 pont)
+        - [x] A felhasználó mindig tudja, hogy melyik oldalon van éppen (pl. az aktuális menüpont más dizájnnal jelenik meg) (0/1 pont)
         - [x] A menü interaktív: a kurzor rávitelére változik a menüpont kinézete (0/1 pont)
         - [x] A menü / oldal fejléc az oldal görgetésénél is látszik (0/1 pont)
       - [ ] TECHNIKAI ELEMEK - 9 PONT
@@ -190,27 +193,27 @@
         - [ ] Objektumorientáltság megfelelő használata (0/2/4 pont)
         - [ ] Sütik értelmes módon való használata (0/3 pont)
     - [ ] MEGVALÓSÍTOTT FUNKCIÓK (MAX: 65 PONT)
-      - [ ] REGISZTRÁCIÓ - 13 PONT
+      - [x] REGISZTRÁCIÓ - 13 PONT
         - [x] Van működő regisztráció, a helyes regisztráció hatására az új felhasználó adatai eltárolódnak (0/2 pont)
-        - [ ] Minden kötelezően kitöltendő űrlapmező kitöltése szerveroldalon is ellenőrizve van (0/2 pont)
-        - [ ] Ha foglalt a felhasználónév (vagy e-mail cím), akkor nem regisztrálja be az új felhasználót (0/2 pont)
-        - [ ] A jelszót két alkalommal kell beírni, ezek azonossága vizsgálva van szerver oldalon(0/2 pont)
-        - [ ] Ha valamelyik mezőt rosszul (vagy nem) tölti ki a felhasználó, akkor a weboldal erre figyelmezteti, pontos hibajelzéssel, az összes hibát jelezve (0/2 pont)
-        - [ ] A felhasználók jelszavai biztonságosan vannak tárolva (nem plain text) (0/3 pont)
-      - [ ] BEJELENTKEZÉS SZABÁLYOS SESSION KEZELÉSSEL - 10 PONT
-        - [ ] Van lehetőség az oldalra való bejelentkezésre (0/2 pont)
-        - [ ] Ha bejelentkezéskor rossz adatokat adunk meg, akkor megfelelő hibaüzenetet kapunk (0/2 pont)
-        - [ ] A bejelentkezett felhasználó olyan (értelmes) oldal(aka)t is elér, amely(ek)et a nem bejelentkezett felhasználó nem (0/2 pont)
-        - [ ] A bejelentkezéshez kötött oldal(ak) nem elérhető(ek), csak a bejelentkezett felhasználóknak, különben átirányít a bejelentkezéshez (0/2 pont)
-        - [ ] Működő kijelentkezés (0/2 pont)
+        - [x] Minden kötelezően kitöltendő űrlapmező kitöltése szerveroldalon is ellenőrizve van (0/2 pont)
+        - [x] Ha foglalt a felhasználónév (vagy e-mail cím), akkor nem regisztrálja be az új felhasználót (0/2 pont)
+        - [x] A jelszót két alkalommal kell beírni, ezek azonossága vizsgálva van szerver oldalon(0/2 pont)
+        - [x] Ha valamelyik mezőt rosszul (vagy nem) tölti ki a felhasználó, akkor a weboldal erre figyelmezteti, pontos hibajelzéssel, az összes hibát jelezve (0/2 pont)
+        - [x] A felhasználók jelszavai biztonságosan vannak tárolva (nem plain text) (0/3 pont)
+      - [x] BEJELENTKEZÉS SZABÁLYOS SESSION KEZELÉSSEL - 10 PONT
+        - [x] Van lehetőség az oldalra való bejelentkezésre (0/2 pont)
+        - [x] Ha bejelentkezéskor rossz adatokat adunk meg, akkor megfelelő hibaüzenetet kapunk (0/2 pont)
+        - [x] A bejelentkezett felhasználó olyan (értelmes) oldal(aka)t is elér, amely(ek)et a nem bejelentkezett felhasználó nem (0/2 pont)
+        - [x] A bejelentkezéshez kötött oldal(ak) nem elérhető(ek), csak a bejelentkezett felhasználóknak, különben átirányít a bejelentkezéshez (0/2 pont)
+        - [x] Működő kijelentkezés (0/2 pont)
       - [ ] BEJELENTKEZÉSHEZ KÖTÖTT FUNKCIÓK - 52 PONT
         - [ ] A felhasználónak van lehetősége néhány adatának módosítására (pl. jelszó, születési dátum, bemutatkozás, stb.) (0/2/4 pont)
         - [ ] A felhasználó tud profilképet feltölteni magának, ezt le is tudja cserélni, illetve az oldalon meg is jelenik (0/2/4 pont)
         - [ ] A felhasználó tudja törölni a felhasználói fiókját, ilyenkor az összes adata törlődik (0/4 pont)
-        - [ ] A felhasználó meg tudja tekinteni más felhasználók profilját / publikus adatait (pl. felhasználónév, profilkép, leírás, stb.), továbbá beállítható, hogy milyen adatokat szeretnénk publikusan elérhetővé tenni (0/4/8 pont)
-        - [ ] A felhasználó különböző interakcióba léphet a weboldallal, ennek következményei vannak, melyek újbóli bejelentkezés után is megmaradnak (pl. termékeket tud kosárba helyezni, filmeket értékelni 1-5 csillaggal (és ezeket látja is, hogy mennyire értékelte korábban), ismerősként vehet fel más felhasználókat, stb.) (0/4/8 pont)
+        - [x] A felhasználó meg tudja tekinteni más felhasználók profilját / publikus adatait (pl. felhasználónév, profilkép, leírás, stb.), továbbá beállítható, hogy milyen adatokat szeretnénk publikusan elérhetővé tenni (0/4/8 pont)
+        - [x] A felhasználó különböző interakcióba léphet a weboldallal, ennek következményei vannak, melyek újbóli bejelentkezés után is megmaradnak (pl. termékeket tud kosárba helyezni, filmeket értékelni 1-5 csillaggal (és ezeket látja is, hogy mennyire értékelte korábban), ismerősként vehet fel más felhasználókat, stb.) (0/4/8 pont)
         - [ ] A felhasználó tud üzenetet küldeni a többi felhasználónak (vagy néhány felhasználónak), akik ezt láthatják, és válaszolni tudnak neki (0/4/8 pont)
-        - [ ] Meg vannak valósítva különböző jogosultsági szintek (pl. felhasználó, admin). Az egyes jogosultsági szinttel rendelkező felhasználók több funkciót elérnek (pl. az admin tud letiltani felhasználókat, látja a rendeléseket, stb.) (0/4/8 pont)
+        - [x] Meg vannak valósítva különböző jogosultsági szintek (pl. felhasználó, admin). Az egyes jogosultsági szinttel rendelkező felhasználók több funkciót elérnek (pl. az admin tud letiltani felhasználókat, látja a rendeléseket, stb.) (0/4/8 pont)
         - [ ] Egyéb, a felsoroltakban nem szereplő, megvalósított funkciók (0/4/8 pont)
     - [ ] Csak a beadandó file-okat tartalmazza a project de azokat mindet?
     - [ ] Minden URI relatív útvonallal van megadva? (ha máshova másolom a project-et is tökéletesen működik a weblap?)

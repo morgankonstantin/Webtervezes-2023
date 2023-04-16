@@ -77,7 +77,7 @@ if (isset($_POST["belepes"])) {
                     <input type="submit" name="belepes" value="Belépés" /> <br /><br />
                 </div>
             </form>
-            <?php echo $uzenet . "<br/>"; ?>
+            <?="<p id='belepes-sikertelen'>$uzenet</p><br />"?>
         </section>
     </main>
     <footer>
