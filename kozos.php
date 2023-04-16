@@ -110,4 +110,31 @@
       return 'checked';
     return '';
   }
+
+  function uploadProfilePicture($username) {
+    global $fajlfeltoltes_hiba;    // ez a változó abban a fájlban található, amiben ezt a függvényt meghívjuk, ezért újradeklaráljuk globálisként
+
+    if (isset($_FILES["profilkep"]) && is_uploaded_file($_FILES["profilkep"]["tmp_name"])) {  // ha töltöttek fel fájlt...
+      $allowed_extensions = ["png", "jpg", "jpeg"];                                           // az engedélyezett kiterjesztések tömbje
+      $extension = strtolower(pathinfo($_FILES["profilkep"]["name"], PATHINFO_EXTENSION));  // a feltöltött fájl kiterjesztése
+
+      if (in_array($extension, $allowed_extensions)) {      // ha a fájl kiterjesztése megfelelő...
+        if ($_FILES["profilkep"]["error"] === 0) {        // ha a fájl feltöltése sikeres volt...
+          if ($_FILES["profilkep"]["size"] <= 31457280) { // ha a fájlméret nem nagyobb 30 MB-nál
+            $path = "db/uploaded_img/" . $username . "." . $extension;   // a cél útvonal összeállítása
+
+            if (!move_uploaded_file($_FILES["profilkep"]["tmp_name"], $path)) { // fájl átmozgatása a cél útvonalra
+              $fajlfeltoltes_hiba = "A fájl átmozgatása nem sikerült!";
+            }
+          } else {
+            $fajlfeltoltes_hiba = "A fájl mérete túl nagy!";
+          }
+        } else {
+          $fajlfeltoltes_hiba = "A fájlfeltöltés nem sikerült!";
+        }
+      } else {
+        $fajlfeltoltes_hiba = "A fájl kiterjesztése nem megfelelő!";
+      }
+    }
+  }
 ?>

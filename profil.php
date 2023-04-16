@@ -18,11 +18,13 @@ if (isset($_POST["mentes"])) {
                 $_SESSION[$key] = $_POST[$key];
             }
         }
-        
     }
     modifyUser($_SESSION["user"]);
     header("Location: profil.php");
 }
+
+$fajlfeltoltes_hiba = "";
+uploadProfilePicture($_SESSION["user"]["nev"]);
 
 ?>
 
@@ -68,6 +70,27 @@ if (isset($_POST["mentes"])) {
     </header>
     <main>
         <h1>Profilom</h1>
+        <?php
+        // a profilkép elérési útvonalának eltárolása egy változóban
+
+        $profilkep = "db/uploaded_img/default.png";      // alapértelmezett kép, amit akkor jelenítünk meg, ha valakinek nincs feltöltött profilképe
+        $utvonal = "db/uploaded_img/" . $_SESSION["user"]["nev"]; // a kép neve a felhasználó nevével egyezik meg
+
+        $kiterjesztesek = ["png", "jpg", "jpeg"];     // a lehetséges kiterjesztések, amivel egy profilkép rendelkezhet
+
+        foreach ($kiterjesztesek as $kiterjesztes) {  // minden kiterjesztésre megnézzük, hogy létezik-e adott kiterjesztéssel profilképe a felhasználónak
+            if (file_exists($utvonal . "." . $kiterjesztes)) {
+                $profilkep = $utvonal . "." . $kiterjesztes;  // ha megtaláltuk a felhasználó profilképét, eltároljuk annak az elérési útvonalát egy változóban
+            }
+        }
+        ?>
+        <div class="img-form">
+            <img src="<?php echo $profilkep; ?>" alt="Profilkép" height="300">
+            <form action="profil.php" method="POST" enctype="multipart/form-data">
+                <input type="file" id="file-upload" name="profilkep" accept="image/*" /> <br />
+                <input type="submit" name="upload-img" value="Feltöltés" />
+            </form>
+        </div>
         <form action="profil.php" class="profil-table" method="post" enctype="multipart/form-data">
             <table border="1" style="display:flex;justify-content:center;align-items:center" class="profil-form">
 
@@ -156,19 +179,19 @@ if (isset($_POST["mentes"])) {
                         <input type="checkbox" name="pub_utca" id="pub_utca" <?= $_SESSION["user"]["pub_utca"] ?>>
                     </td>
                 </tr>
-            </form>
+        </form>
         </table>
         <div class="kedvenc-bolygo">
             <fieldset id="kedvenc-bolygo">
                 <legend>Kedvenc bolygó:</legend>
-                <label for="kedvenc-merkur">Merkúr: </label> <input id="kedvenc-merkur" name="kedvenc" type="radio" value="merkur" <?=isKedvenc("merkur")?> />
-                <label for="kedvenc-venusz">Vénusz: </label> <input id="kedvenc-venusz" name="kedvenc" type="radio" value="venusz" <?=isKedvenc("venusz")?> /><br />
-                <label for="kedvenc-fold">Föld: </label> <input id="kedvenc-fold" name="kedvenc" type="radio" value="fold" <?=isKedvenc("fold")?> />
-                <label for="kedvenc-mars">Mars: </label> <input id="kedvenc-mars" name="kedvenc" type="radio" value="mars" <?=isKedvenc("mars")?> /><br />
-                <label for="kedvenc-jupiter">Jupiter: </label> <input id="kedvenc-jupiter" name="kedvenc" type="radio" value="jupiter" <?=isKedvenc("jupiter")?> />
-                <label for="kedvenc-szaturnusz">Szaturnusz: </label> <input id="kedvenc-szaturnusz" name="kedvenc" type="radio" value="szaturnusz" <?=isKedvenc("szaturnusz")?> /><br />
-                <label for="kedvenc-uranusz">Uránusz: </label> <input id="kedvenc-uranusz" name="kedvenc" type="radio" value="uranusz" <?=isKedvenc("uranusz")?> />
-                <label for="kedvenc-neptunusz">Neptunusz: </label> <input id="kedvenc-neptunusz" name="kedvenc" type="radio" value="neptunusz" <?=isKedvenc("neptunusz")?> />
+                <label for="kedvenc-merkur">Merkúr: </label> <input id="kedvenc-merkur" name="kedvenc" type="radio" value="merkur" <?= isKedvenc("merkur") ?> />
+                <label for="kedvenc-venusz">Vénusz: </label> <input id="kedvenc-venusz" name="kedvenc" type="radio" value="venusz" <?= isKedvenc("venusz") ?> /><br />
+                <label for="kedvenc-fold">Föld: </label> <input id="kedvenc-fold" name="kedvenc" type="radio" value="fold" <?= isKedvenc("fold") ?> />
+                <label for="kedvenc-mars">Mars: </label> <input id="kedvenc-mars" name="kedvenc" type="radio" value="mars" <?= isKedvenc("mars") ?> /><br />
+                <label for="kedvenc-jupiter">Jupiter: </label> <input id="kedvenc-jupiter" name="kedvenc" type="radio" value="jupiter" <?= isKedvenc("jupiter") ?> />
+                <label for="kedvenc-szaturnusz">Szaturnusz: </label> <input id="kedvenc-szaturnusz" name="kedvenc" type="radio" value="szaturnusz" <?= isKedvenc("szaturnusz") ?> /><br />
+                <label for="kedvenc-uranusz">Uránusz: </label> <input id="kedvenc-uranusz" name="kedvenc" type="radio" value="uranusz" <?= isKedvenc("uranusz") ?> />
+                <label for="kedvenc-neptunusz">Neptunusz: </label> <input id="kedvenc-neptunusz" name="kedvenc" type="radio" value="neptunusz" <?= isKedvenc("neptunusz") ?> />
                 <div class="pub-kedvenc">
                     <input type="checkbox" name="pub_kedvenc" id="pub_kedvenc" <?= $_SESSION["user"]["pub_kedvenc"] ?>>
                     <label for="pub_kedvenc" id="pub-kedvenc-label">Publikus</label>
