@@ -22,8 +22,9 @@
             checkIfPasswordsAreEqual();
             global $errors;
             if (count($errors) == 0) {
-                saveUser(createUser($_POST));
-                $_SESSION['user'] = 1;
+                $user = createUser($_POST);
+                saveUser($user);
+                $_SESSION['user'] = $user;
                 header("Location: index.php");
             }
         }
@@ -184,7 +185,7 @@
                     <li class="right-menu"><a href="felhasznalok.php">Felhasználók</a></li>
                 <?php } else { ?>
                     <li class="right-menu"><a href="belepes.php">Bejelentkezés</a></li>
-                    <li class="right-menu"><a href="register.php">Regisztráció</a></li>
+                    <li class="right-menu"><a class="active" href="register.php">Regisztráció</a></li>
                 <?php } ?>
             </ul>
         </nav>
@@ -250,7 +251,7 @@
         <p>Készítők: Konstantin Morgan</p>
         <p>email: <a href="mailto:Konstantin.Morgan@stud.u-szeged.hu">Konstantin.Morgan@stud.u-szeged.hu</a></p>
         <p>Slezák Attila</p>
-        <p>email: <a href="mailto:h880402@stud.u-szeged.hu">h880402@stud.u-szeged.hu</a></p>
+        <p>email: <a href="mailto:Slezak.Attila@stud.u-szeged.hu">Slezak.Attila@stud.u-szeged.hu</a></p>
     </footer>
 </body>
 

@@ -1,5 +1,16 @@
 <?php
   $usersDB = "db/users.txt";
+  $bolygoValueNameDict = [
+      "merkur" => "Merkúr",
+      "venusz" => "Vénusz",
+      "fold" => "Föld",
+      "mars" => "Mars",
+      "jupiter" => "Jupiter",
+      "szaturnusz" => "Szaturnusz",
+      "uranusz" => "Uránusz",
+      "neptunusz" => "Neptunusz",
+  ];
+
   function loadUsers() {
     $users = [];
     global $usersDB;
@@ -92,5 +103,11 @@
 
   function checkPassword($password, $passwordHash) {
     return password_verify($password, $passwordHash);
+  }
+
+  function isKedvenc($bolygo) {
+    if ($_SESSION["user"]["kedvenc"] === $bolygo)
+      return 'checked';
+    return '';
   }
 ?>

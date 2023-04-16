@@ -3,6 +3,39 @@
 <?php
     session_start();
     include "kozos.php";
+    $users = loadUsers();
+    $admin = $_SESSION['user']['admin'];
+    processForm();
+
+    function processForm() {
+        if ($_SESSION['user']['admin'] && isFormSent()) {
+            global $users;
+            foreach ($users as &$user) {
+                $found = 0;
+                foreach ($_POST["admin"] as $value) {
+                    if($user['id'] == $value) {
+                        if(!$user['admin']) {
+                            $user['admin'] = 'checked';
+                            modifyUser($user);
+                        }
+                        $found = 1;
+                    }
+                }
+                if (!$found && $user['admin'] && $user['id'] !== $_SESSION['user']['id']) {
+                    $user['admin'] = '';
+                    modifyUser($user);
+                }
+                if ($_SESSION['user']['id'] == $user['id'])
+                    $_SESSION['user'] = $user;
+            }
+        }
+    }
+
+    function isFormSent() {
+        if (isset($_POST['submit']))
+            return true;
+        return false;
+    }
 ?>
 <head>
     <meta charset="UTF-8" />
@@ -20,7 +53,7 @@
     <header>
         <nav class="navbar">
             <ul>
-                <li><a class="active" href="index.php">Naprendszerünk</a></li>
+                <li><a href="index.php">Naprendszerünk</a></li>
                 <li><a href="bolygok/merkur.php">Merkúr</a></li>
                 <li><a href="bolygok/venusz.php">Vénusz</a></li>
                 <li><a href="bolygok/fold.php">Föld</a></li>
@@ -32,7 +65,7 @@
                 <?php if (isset($_SESSION["user"])) { ?>
                     <li class="right-menu"><a href="kijelentkezes.php">Kijelentkezés</a></li>
                     <li class="right-menu"><a href="profil.php">Profilom</a></li>
-                    <li class="right-menu"><a href="felhasznalok.php">Felhasználók</a></li>
+                    <li class="right-menu"><a class="active" href="felhasznalok.php">Felhasználók</a></li>
                 <?php } else { ?>
                     <li class="right-menu"><a href="belepes.php">Bejelentkezés</a></li>
                     <li class="right-menu"><a href="register.php">Regisztráció</a></li>
@@ -46,21 +79,22 @@
             <table id="table-felhasznalok">
                 <thead>
                     <tr>
-                        <th>Profilkép</th>
-                        <th>Név</th>
-                        <th>Email</th>
-                        <th>Telefonszám</th>
-                        <th>Születési dátum</th>
-                        <th>Cím</th>
-                        <th id="table-admin">Admin jog</th>
+                        <th id="felh-profilkep">Profilkép</th>
+                        <th id="felh-nev">Név</th>
+                        <th id="felh-email">Email</th>
+                        <th id="felh-tel">Telefonszám</th>
+                        <th id="felh-szul-datum">Születési dátum</th>
+                        <th id="felh-cim">Cím</th>
+                        <th id="felh-kedvenc">Kedvenc bolygó</th>
+                        <th id="felh-admin">Admin jog</th>
                     </tr>
                 </thead>
                 <tbody>
                 <?php
-                    $users = loadUsers();
+                    global $bolygoValueNameDict;
                     foreach ($users as $user) {?>
                         <tr>
-                            <td>
+                            <td headers="felh-profilkep">
                                 <?php
                                     if (!empty($user['img'])) {
                                         $url = $user['img'];
@@ -68,17 +102,19 @@
                                     }
                                 ?>
                             </td>
-                            <td><?=$user['nev']?></td>
-                            <td><?=$user['email']?></td>
-                            <td><?=$user['tel']?></td>
-                            <td><?=$user['szul-datum']?></td>
-                            <td><?=$user['irszam']?> <?=$user['varos']?>,<br /> <?=$user['utca']?></td>
-                            <td><input class="admin-checkbox" type="checkbox" name="admin" value="<?=$user['id']?>" <?=$user['admin']?> /></td>
+                            <td headers="felh-nev"><?=$user['nev']?></td>
+                            <td headers="felh-email"><?=$user['email']?></td>
+                            <td headers="felh-tel"><?=$user['tel']?></td>
+                            <td headers="felh-szul-datum"><?=$user['szul-datum']?></td>
+                            <td headers="felh-cim"><?=$user['irszam']?> <?=$user['varos']?>,<br /> <?=$user['utca']?></td>
+                            <td headers="felh-kedvenc"><?=$bolygoValueNameDict[$user['kedvenc']]?></td>
+                            <td headers="felh-admin"><input class="admin-checkbox" type="checkbox" name="admin[]" value="<?=$user['id']?>"
+                                    <?=$user['admin']?> <?=$admin ? '' : 'disabled' ?> /></td>
                         </tr>
                 <?php } ?>
                 </tbody>
             </table>
-            <input type="submit" id="submit-admin" value="Admin Jogok Mentése">
+            <?=$admin ? '<input type="submit" name="submit" id="submit-admin" value="Admin Jogok Mentése">' : ''?>
         </form>
     </main>
     <footer>
@@ -89,7 +125,7 @@
         </p>
         <p>Slezák Attila</p>
         <p>
-            email: <a href="mailto:h880402@stud.u-szeged.hu">h880402@stud.u-szeged.hu</a>
+            email: <a href="mailto:Slezak.Attila@stud.u-szeged.hu">Slezak.Attila@stud.u-szeged.hu</a>
         </p>
     </footer>
 </body>

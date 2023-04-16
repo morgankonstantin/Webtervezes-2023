@@ -1,6 +1,6 @@
 <?php
 session_start();
-include_once "kozos.php";
+include "kozos.php";
 
 if (!isset($_SESSION["user"])) {
     header("Location: login.php");
@@ -156,29 +156,28 @@ if (isset($_POST["mentes"])) {
                         <input type="checkbox" name="pub_utca" id="pub_utca" <?= $_SESSION["user"]["pub_utca"] ?>>
                     </td>
                 </tr>
-            </table>
-            <div class="kedvenc-bolygo">
-                <fieldset id="kedvenc-bolygo">
-                    <legend>Kedvenc bolygó:</legend>
-                    <label for="kedvenc-merkur">Merkúr: </label> <input id="kedvenc-merkur" name="kedvenc" type="radio" value="merkur" />
-                    <label for="kedvenc-venusz">Vénusz: </label> <input id="kedvenc-venusz" name="kedvenc" type="radio" value="venusz" /><br />
-                    <label for="kedvenc-fold">Föld: </label> <input id="kedvenc-fold" name="kedvenc" type="radio" value="fold" checked />
-                    <label for="kedvenc-mars">Mars: </label> <input id="kedvenc-mars" name="kedvenc" type="radio" value="mars" /><br />
-                    <label for="kedvenc-jupiter">Jupiter: </label> <input id="kedvenc-jupiter" name="kedvenc" type="radio" value="jupiter" />
-                    <label for="kedvenc-szaturnusz">Szaturnusz: </label> <input id="kedvenc-szaturnusz" name="kedvenc" type="radio" value="szaturnusz" /><br />
-                    <label for="kedvenc-uranusz">Uránusz: </label> <input id="kedvenc-uranusz" name="kedvenc" type="radio" value="uranusz" />
-                    <label for="kedvenc-neptunusz">Neptunusz: </label> <input id="kedvenc-neptunusz" name="kedvenc" type="radio" value="neptunusz" />
-                    <div class="pub-kedvenc">
-                        <input type="checkbox" name="pub_kedvenc" id="pub_kedvenc" <?= $_SESSION["user"]["pub_kedvenc"] ?>>
-                        <label for="pub_kedvenc" id="pub-kedvenc-label">Publikus</label>
-                    </div>
-                </fieldset>
-            </div>
-            <div class="mentes">
-                <input type="submit" name="mentes" value="Mentés">
-            </div>
-        </form>
-        <?php echo " . $uzenet . "; ?>
+            </form>
+        </table>
+        <div class="kedvenc-bolygo">
+            <fieldset id="kedvenc-bolygo">
+                <legend>Kedvenc bolygó:</legend>
+                <label for="kedvenc-merkur">Merkúr: </label> <input id="kedvenc-merkur" name="kedvenc" type="radio" value="merkur" <?=isKedvenc("merkur")?> />
+                <label for="kedvenc-venusz">Vénusz: </label> <input id="kedvenc-venusz" name="kedvenc" type="radio" value="venusz" <?=isKedvenc("venusz")?> /><br />
+                <label for="kedvenc-fold">Föld: </label> <input id="kedvenc-fold" name="kedvenc" type="radio" value="fold" <?=isKedvenc("fold")?> />
+                <label for="kedvenc-mars">Mars: </label> <input id="kedvenc-mars" name="kedvenc" type="radio" value="mars" <?=isKedvenc("mars")?> /><br />
+                <label for="kedvenc-jupiter">Jupiter: </label> <input id="kedvenc-jupiter" name="kedvenc" type="radio" value="jupiter" <?=isKedvenc("jupiter")?> />
+                <label for="kedvenc-szaturnusz">Szaturnusz: </label> <input id="kedvenc-szaturnusz" name="kedvenc" type="radio" value="szaturnusz" <?=isKedvenc("szaturnusz")?> /><br />
+                <label for="kedvenc-uranusz">Uránusz: </label> <input id="kedvenc-uranusz" name="kedvenc" type="radio" value="uranusz" <?=isKedvenc("uranusz")?> />
+                <label for="kedvenc-neptunusz">Neptunusz: </label> <input id="kedvenc-neptunusz" name="kedvenc" type="radio" value="neptunusz" <?=isKedvenc("neptunusz")?> />
+                <div class="pub-kedvenc">
+                    <input type="checkbox" name="pub_kedvenc" id="pub_kedvenc" <?= $_SESSION["user"]["pub_kedvenc"] ?>>
+                    <label for="pub_kedvenc" id="pub-kedvenc-label">Publikus</label>
+                </div>
+            </fieldset>
+        </div>
+        <div class="mentes">
+            <input type="submit" value="Mentés">
+        </div>
     </main>
     <footer>
         <p>Készítők: Konstantin Morgan</p>
